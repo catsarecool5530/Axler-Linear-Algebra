@@ -1,0 +1,33 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\usepackage{float}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
+\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+\title{Axler Linear Algebra}
+\author{Nathan Yan}
+\date{\today}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\begin{document}
+\maketitle
+
+\hypersetup{linkcolor=black, urlcolor=black, citecolor=black}
+\tableofcontents
+\clearpage
+\hypersetup{linkcolor=blue, urlcolor=blue, citecolor=blue}
+
+I plan to mostly take notes on paper, but I will a lot of the exercises here because I need to practice writing \LaTeX \ quickly and it's also a nicer format for other people to read.
+
+\input{Sections/VectorSpaces.tex}
+\end{document}

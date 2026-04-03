@@ -1,0 +1,71 @@
+\clearpage
+\section{Vector Spaces}
+
+\subsection{$\mathbb{R}^n$ and $\mathbb{C}^n$}
+
+These exercises are really easy but I am always scared that my proofs of these are not rigorous enough....
+
+I do odds.
+
+\begin{enumerate}
+    \item[1] Show that $𝛼 + 𝛽 = 𝛽 + 𝛼$ for all $𝛼, 𝛽 ∈ \mathbb{C}$.
+    
+    \begin{proof}
+        Let $\alpha = a + bi$ and $\beta = c + di$ where $a, b, c, d \in \mathbb{R}$.
+
+        Then we have 
+        \begin{align*}
+            \alpha + \beta &= \\
+            a + bi + c + di &= \\ 
+            (a + c) + (b + d)i &= \\
+        \end{align*}
+        Because addition is commutative under the reals, we can swap the terms.
+        \begin{align*}
+            (c + a) + (d + b)i &= \\
+            c + di + a + bi &= \\
+            \beta + \alpha  
+        \end{align*}
+    \end{proof}
+
+    \item[3] Show that $(𝛼𝛽)𝜆 = 𝛼(𝛽𝜆)$ for all $𝛼, 𝛽, 𝜆 ∈ \mathbb{C}$.
+
+    Distribute, multiply, then rearrange terms using the communitivity of the reals to get the answer. It is quite tedious, so I won't do it here.
+
+    \item[5] Show that for every $𝛼 ∈ \mathbb{C}$, there exists a unique $𝛽 ∈ \mathbb{C}$ such that $𝛼 + 𝛽 = 0$.
+    
+    \begin{proof}
+        Let $\alpha = a + bi$. Then, let $\beta = -a - bi$. We can observe that 
+        \begin{align*}
+            \alpha + \beta &= \\
+            a + bi - a - bi &= \\
+            (a - a) + i(b - b) &= 0
+        \end{align*}
+    \end{proof}
+
+    \item[7] Show that $\frac{-1 + \sqrt{3}i}{2}$ is a cube root of 1 (meaning that its cube equals 1)
+    
+    Again, this is a tedious problem where you just multiply it out. Of course, I can represent this number as $e^{\frac{\pi}{3}}$ but that's cheating.
+
+    \item[9] Find $𝑥 ∈ 𝐑^4$ such that
+
+    $(4, −3, 1, 7) + 2𝑥 = (5, 9, −6, 8)$
+
+    \begin{proof}
+        This is vector addition, so we can apply the definition. 
+
+        \begin{align*}
+            (4, -3, 1, 7) + 2x &= (5, 9, -6, 8) \\
+            (4 + 2x_1, -3 + 2x_2, 1 + 2x_3, 7 + 2x_4) &= (5, 0, -6, 8)
+        \end{align*}
+        For each term in the list, the number must hold, so in essence we get four different equations:
+        \begin{align*}
+            4 + 2x_1 &= 5 \\
+            -3 + 2x_2 &= 0 \\
+            1 + 2x_3 &= -6 \\
+            7 + 2x_4 &= 8 \\
+        \end{align*}
+        Each of these linear equations yields only one solution, so the only solution for the equation is 
+        \boxed{x = (\frac{1}{2}, -\frac{3}{2}, -\frac{7}{2}, \frac{1}{2})}
+    \end{proof}
+\end{enumerate}
+
