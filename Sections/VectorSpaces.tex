@@ -44,7 +44,7 @@ I do odds.
 
     \item[7] Show that $\frac{-1 + \sqrt{3}i}{2}$ is a cube root of 1 (meaning that its cube equals 1)
     
-    Again, this is a tedious problem where you just multiply it out. Of course, I can represent this number as $e^{\frac{\pi}{3}}$ but that's cheating.
+    Again, this is a tedious problem where you just multiply it out. Of course, I can represent this number as $e^{\frac{\pi}{3}i}$ but that's cheating.
 
     \item[9] Find $𝑥 ∈ 𝐑^4$ such that
 
@@ -67,5 +67,127 @@ I do odds.
         Each of these linear equations yields only one solution, so the only solution for the equation is 
         \boxed{x = (\frac{1}{2}, -\frac{3}{2}, -\frac{7}{2}, \frac{1}{2})}
     \end{proof}
+\end{enumerate}
+
+\subsection{Definition of a Vector Space}
+
+This one introduces the concept of a vector space in an abstract manner and gives a few unorthodox examples.
+
+\begin{enumerate}
+    \item[1] Prove that $−(−𝑣) = 𝑣$ for every $𝑣 ∈ V$
+
+    \begin{proof}
+        $-(-v)$ is the additive inverse of $-v$. Therefore,
+        
+        \begin{align*}
+            -(-v) + (-v) &= 0 \\
+            -(-v) + (-v + v) &= v \\
+            -(-v) + 0 &= v \\
+            -(-v) = v 
+        \end{align*}
+        As desired.
+    \end{proof}
+
+    \item[3] Suppose $𝑣, 𝑤 ∈ 𝑉$. Explain why there exists a unique $𝑥 ∈ 𝑉$ such that $𝑣 + 3𝑥 = w$.
+    
+    \begin{align*}
+        v + 3x &= w \\
+        3x &= w - v \\ 
+        x &= \frac{1}{3}(w - v)
+    \end{align*}
+    Since that right side is a unique vector, $x$ is a unique vector. You invoke the properties and stuff for this, but I'm too lazy.
+
+    \item[5] Show that in the definition of a vector space (1.20), the additive inverse
+condition can be replaced with the condition that
+$$0𝑣 = 0 \text{ for all } 𝑣 ∈ 𝑉.$$
+Here the 0 on the left side is the number 0, and the 0 on the right side is the
+additive identity of $V$.
+
+    \begin{proof}
+        We can show that given this condition, every element $v \in V$ has an additive inverse. 
+
+        \begin{align*}
+            0v &= 0 \\
+            (1 + -1)v &= 0
+        \end{align*}
+        Note that even though we don't know whether \emph{vector} addition has an additive inverse the 0 on the left size is just a scalar, so we can still say there is an additive inverse. 
+
+
+        Then distribute and apply the multiplicative identity axiom\dots
+        \begin{align*}
+            1v + (-1)v &= 0 \\
+            v + (-1)v &= 0
+        \end{align*}
+        Therefore $(-1)v$ is the additive inverse for all $v \in V$.
+    \end{proof}
+    
+    \item[7] Suppose $𝑆$ is a nonempty set. Let $𝑉^𝑆$ denote the set of functions from $𝑆$ to $𝑉$.
+Define a natural addition and scalar multiplication on $𝑉^𝑆$
+, and show that $𝑉^𝑆$
+is a vector space with these definitions.
+
+\begin{proof}
+    Like with $F^S$, we can sort of ``piggyback'' off the properties of $V$ to maintain the properties of a vector space in $V^S$. 
+
+    Define addition as 
+    \[(f + g)(x) = f(x) + g(x)\]
+
+    Let the additive identity be $0(x) = 0$ for all $x \in S$.
+
+    \begin{align*}
+        (f + 0)(x) = f(x) + 0(x) = f(x) + 0 = f(x)
+    \end{align*}
+
+
+    For all $f, g \in V^S$. Because $f(x)$ is a vector, it has an inverse (namely $-f(x)$). Therefore, we can define the additive inverse as 
+    \[(-f)(x) = -f(x)\] 
+    \begin{align*}
+        (f + (-f))(x) = f(x) + (-f(x)) = 0 = 0(x)
+    \end{align*}
+
+    Communativity: 
+
+    \begin{align*}
+        (f + g)(x) = f(x) + g(x) = g(x) + f(x) = (g + f)(x)
+    \end{align*}
+    We can swap $f(x)$ and $g(x)$ because $V$ is communative.
+
+    Associativity:
+    \begin{align*}
+        ((f + g) + h)(x) = (f(x) + g(x)) + h(x) = f(x) + (g(x) + h(x)) = (f + (g + h))(x)
+    \end{align*}
+    Again, we use the properties of the vector space $V$ to help us out here.
+
+    Scalar multiplication 
+
+    For all $\lambda \in \F, v \in V^S$, 
+    \[(\lambda v)(x) = \lambda v(x)\]
+
+    Multiplicative Identity 
+
+    1 is the multiplicative identity. 
+    \[(1v)(x) = 1v(x) = v(x)\]
+    Since 1 is the multiplicative identity of $V$.
+
+    Distributive property 
+
+    \begin{align*}
+        (a(u + v))(x) = a(u + v)(x) = a(u(x) + v(x)) = au(x) + av(x) = (au + av)(x)
+    \end{align*}
+    Because of the distributive property of $V$.
+
+    \begin{align*}
+        ((a + b)v)(x) = (a + b)v(x) = av(x) + bv(x) = (av + bv)(x)
+    \end{align*}
+    For the same reason.
+
+    Thus, we have proved all the properties of vector spaces on $V^S$, therefore $V^S$ is a vector space.
+
+    Closure 
+
+    Because $V$ is closed under addition and scalar multiplication, and all our operations are defined using these 2 operations, $V^S$ is closed.
+
+\end{proof}
+
 \end{enumerate}
 
