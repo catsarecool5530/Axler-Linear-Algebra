@@ -181,13 +181,196 @@ is a vector space with these definitions.
     \end{align*}
     For the same reason.
 
-    Thus, we have proved all the properties of vector spaces on $V^S$, therefore $V^S$ is a vector space.
 
     Closure 
 
     Because $V$ is closed under addition and scalar multiplication, and all our operations are defined using these 2 operations, $V^S$ is closed.
 
+    Thus, we have proved all the properties of vector spaces on $V^S$, therefore $V^S$ is a vector space.
+
 \end{proof}
+
+\subsection{Subspaces}
+
+This is where it ramps up a little bit, we are doing some linear algebra now! This idea of ``subspaces'' is interesting\dots
+
+\begin{enumerate}
+    \item[1] For each of the following subsets of $𝐅^3$
+, determine whether it is a subspace
+of $𝐅^3$
+    \begin{enumerate}
+        \item $\{(𝑥_1, 𝑥_2, 𝑥_3) ∈ 𝐅^3∶ 𝑥_1 + 2𝑥_2 + 3𝑥_3 = 0\}$
+        
+        \begin{proof}
+            $(0, 0, 0)$ is in our set, so we have the additive identity. Consider vectors $x$ and $y$ in our set, and add them. 
+            \begin{align*}
+                x + y &= \\
+                (x_1, x_2, x_3) + (y_1, y_2, y_3) &= \\
+                (x_1 + y_1, x_2 + y_2, x_3 + y_3) &= \\ 
+                z &= \\
+                z_1 + 2z_2 + 3z_3 &= \\
+                x_1 + y_1 + 2x_2 + 2y_2 + 3x_3 + 3y_3 &= \\
+                x_1 + 2x_2 + 3x_3 + y_1 + 2y_2 + 3y_3 &= \\
+                0 + 0 &= 0
+            \end{align*}
+            Because $x$ and $y$ are members of the subset, we can use the condition. Therefore, $z$ is part of our set. 
+
+            Now let us consider scalar multiplication. Consider $x$ in our set and $\lambda \in \F$. Then, 
+            \begin{align*}
+                \lambda x &= \\
+                (\lambda x_1, \lambda x_2, \lambda x_3)
+            \end{align*}
+            We then consider whether this new element is in our set. 
+            \begin{align*}
+                \lambda x_1 + 2\lambda x_2 + 3\lambda x_3 &= \\
+                \lambda(x_1 + 2x_2 + 3x_3) &= \\
+                \lambda(0) &= 0
+            \end{align*}
+            We use the distributive property here. Since it follows the set's condition, we can say that it is closed under scalar multiplication.
+
+            These are all the conditions, so we can say that our set is a subspace of $\F^3$.
+        \end{proof}
+        \item $\{(𝑥_1, 𝑥_2, 𝑥_3) ∈ 𝐅^3: 𝑥_1 + 2𝑥_2 + 3𝑥_3 = 4\}$
+
+        \begin{proof}
+            Consider the element $(1, 0, 1)$ which is in our set because $1 + 2 \cdot 0 + 3 \cdot 1 = 4$ and it is in $\F^3$. Now consider multiplying it by the scalar 2 to create the element $(2, 0, 2)$. Unfortunately, $2 + 2\cdot 0 + 3 \cdot 2 = 8 \neq 4$, so this set does not fulfill the closure under scalar multiplication condition.
+        \end{proof}
+
+            \item $\{(x_1, x_2, x_3) \in \mathbb{F}^3 : x_1x_2x_3 = 0\}$
+            
+            \begin{proof}
+                Consider the sets $(1, 1, 0)$ and $(0, 0, 1)$. Summing these up, we get $(1, 1, 1)$, but $1\cdot 1\cdot 1 = 1 \neq 0$, so this set fails the additive closure property.
+            \end{proof}
+            \item $\{(x_1, x_2, x_3) \in \mathbb{F}^3 : x_1 = 5x_3\}$
+            
+            I am too lazy but I did the other 3, good enough
+    \end{enumerate}
+    \item[2] I did number 2 in my notebook, not noticing it was actually an exercise.
+
+    \item[3] Show that the set of differentiable real-valued functions $f$ on the interval
+    $(-4, 4)$ such that $f'(-1) = 3f(2)$ is a subspace of $\mathbf{R}^{(-4,4)}$.
+
+    \begin{proof}
+        Clearly this set is a subset of $\R^{(-4, 4)}$. The zero function ($f(x) = 0$) satisfies the condition (since the derivative is also 0), so we have the additive identity. 
+
+        Consider functions $f, g$ in the set, then consider $(f + g)(x)$. Functions and their derivatives are additive, so we can write 
+        \begin{align*}
+            (f + g)'(-1) &= \\
+            f'(-1) + g'(-1) &= \\
+            3f(2) + 3g(2) &= \\
+            3(f(2) + g(2)) &= \\
+            3(f + g)(2)
+        \end{align*}
+        Therefore, we have additive closure. 
+
+        Consider $f$ in the set and $\lambda \in \R$. Let us show that $(\lambda f)(x) = \lambda f(x)$ is in the set. 
+        \begin{align*}
+            (\lambda f)'(-1) &= \\
+            \lambda f'(-1) &= \\
+            3\lambda f(2) &= \\
+            3(\lambda f)(2)
+        \end{align*}
+        So we are closed under scalar multiplication.
+    \end{proof}
+
+    \item[5] Is $\mathbb{R}^2$ a subspace of the complex vector space $\mathbb{C}^2$?
+    
+    \begin{proof}
+        Although $\R^2$ is a vector space over $\R$, it is not a vector space over $\C$. For example, multiplying $(1, 1)$ by $i$ produces a vector not in $\R^2$, so it is not closed under scalar multiplication. 
+    \end{proof}
+
+    \item[7] If \(U\) is closed under addition and under taking additive inverses (meaning
+    \(-u \in U\) whenever \(u \in U\)), then \(U\) is a subspace of \(\mathbb{R}^2\).
+
+    \begin{proof}
+        Consider the set $\mathbb{Q}^2$. It is closed under addition and additive inverse, but it is \emph{not} closed under scalar multiplication over $\R$. For example, the set $(1, 1)$ when multiplied by an irrational number such as $\sqrt{2}$ is not a part of the set.
+    \end{proof}
+
+    \item[9] A function \(f : \mathbb{R} \to \mathbb{R}\) is called periodic if there exists a positive number
+    \(p\) such that \(f(x) = f(x + p)\) for all \(x \in \mathbb{R}\). Is the set of periodic functions
+    from \(\mathbb{R}\) to \(\mathbb{R}\) a subspace of \(\mathbb{R}^{\mathbb{R}}\)? Explain.
+
+    \begin{proof}
+        There is not closure under addition, unfortunately. Consider the functions 
+        \begin{align*}
+            f(x) &= \cos(2\pi x) \\
+            g(x) &= \cos(2x)
+        \end{align*}
+
+        $f(x)$ is at its maximum of 1 whenever $x \in \mathbb{Z}$, and $g(x)$ is at its maximum of 1 whenever $x = n \pi, n \in \mathbb{Z}$. $(f + g)(x) = 2$ only when both of these conditions are met. However, this is only true when $x=0$. 
+
+        Suppose that $x = n \pi$ and $x = m$ where $n, m \in \mathbb{Z}$. Then,
+        \begin{align*}
+            n \pi &= m \\
+            \pi = \frac{m}{n}
+        \end{align*}
+        Which implies that $\pi$ is rational if $n \neq 0$, so the only solution is $x = 0$.
+
+        Therefore, $(f + g)(x)$ reaches its maximum only at $x=0$, and there is no $p > 0$ where $(f + g)(0) = (f + g)(p)$. Therefore $(f + g)(x)$ is outside the set and it fails the additive closure condition, making it not a vector space. 
+    \end{proof}
+
+    \item[11] Prove that the intersection of every collection of subspaces of \(V\) is a subspace of \(V\).
+
+    \begin{proof}
+        Consider subspaces of $V$, $V_1, \ldots, V_M$. All subspaces contain the identity element, so $V_1 \cap \ldots \cap V_M$ will also contain it. Consider $u, v \in V_1 \cap \ldots V_M$. Because $u, v \in V_k$, any addition and scalar multiplication will remain in $V_k$. Therefore, any addition and scalar multiplication will remain in $V_1 \cap \ldots \cap V_M$, completing the proof.
+    \end{proof}
+
+    \item[12] Prove that the union of two subspaces of \(V\) is a subspace of \(V\) if and only if one of the subspaces is contained in the other.
+    
+    First, lets prove a lemma we will need for this.
+    \begin{lemma*}
+        Given $u \not \in V, v \in V, u + v \not \in V$.
+    \end{lemma*}
+    \begin{proof}
+        Suppose that $u + v \in V$. Then, because of the additive inverse, $u + v - v = u \in V$, and we reach a contradiction.
+    \end{proof}
+
+    Now we can prove the main result.
+    \begin{proof}
+        Consider subspaces $V_1, V_2$ 
+
+        Consider WLOG $V_1 \subseteq V_2$. Then, $V_1 \cup V_2 = V_2$, and since $V_2$ is a subspace so is $V_1 \cup V_2$.
+
+        The converse is trickier. We prove the contrapositive. Consider when $V_1$ and $V_2$ are not subsets of each other. Then, there is some element $u \in V_1, u \not \in V_2$. There must also be an element $v \in V_2, v \not \in V_1$. These are true from the definition of subset. Consider $u + v$. By the lemma, this sum is in neither set, so it is not in the union of $V_1$ and $V_2$, so $V_1 \cup V_2$ is not a subspace.
+
+    \end{proof}
+
+    \item[13] Prove that the union of three subspaces of \(V\) is a subspace of \(V\) if and only if one of the subspaces contains the other two.
+    
+    This problem is very difficult (as the textbook alluded) and I needed to look up the solution.
+    
+    \begin{proof}
+        If any subspace is contained within another this reduces to the 2-subspace case. 
+
+        Presume that $V_1 \cup V_2 \cup V_3$ is a subspace. 
+
+        Suppose $V_1 \cup V_2 \backslash V_3$ was not empty. Then, we can use $u \in V_1 \cup V_2 \backslash V_3$ and $v \in V_3 \backslash V_2 \cup V_1$ to prove that there is not closure using the lemma from exercise 12. By symmetry, there is no element that is in exactly two of the subsets. 
+
+        From here on, suppose $u \in V_1 \backslash V_2 \cup V_3$, $v \in V_2 \backslash V_1 \cup V_3$. Note that if these elements did not exist one set would be a subset of another or we would have an element in exactly two subsets. Then, to be closed, $u + v \in V_3$ since by the Exercise 12 lemma we cannot have $u + v$ be in either $V_1$ or $V_2$. Consider $a, b$ in $\F$ where $a, b \neq 0, a - b \neq 0$. We also have $au + v \in V_3$ and $bu + v \in V_3$ since scalar multiplication by a non-zero constant should not change which subspaces a vector is in, so $au + v - (bu - v) = (a-b)u \in V_3$. However, $u$ was explicitly only in $V_1$, so we have a contradiction and $V_1 \cup V_2 \cup V_3$ is not actually a subspace! Note that this proof does not work in $\F_2$ because we do not have 2 different numbers that satisfy the properties of $a$ and $b$. 
+    \end{proof}
+
+    \item[15] Suppose $𝑈$ is a subspace of $𝑉$. What is $𝑈 + 𝑈$?
+    \begin{proof}
+        We use the definition of subspace addition. 
+        \begin{align*}
+            U + U = \{u + v: u, v \in U\}
+        \end{align*}
+        Because $U$ is a subspace and is therefore closed, this is identical to $U$. 
+    \end{proof}
+
+    \item[17] Is the operation of addition on the subspaces of $V$ associative? In other words, if
+    $V_1, V_2, V_3$ are subspaces of $V$, is
+    \[
+        (V_1 + V_2) + V_3 = V_1 + (V_2 + V_3)?
+    \]
+
+    
+
+
+
+
+
+\end{enumerate}
 
 \end{enumerate}
 
