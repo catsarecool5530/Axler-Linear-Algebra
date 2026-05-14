@@ -190,6 +190,8 @@ is a vector space with these definitions.
 
 \end{proof}
 
+\end{enumerate}
+
 \subsection{Subspaces}
 
 This is where it ramps up a little bit, we are doing some linear algebra now! This idea of ``subspaces'' is interesting\dots
@@ -364,13 +366,105 @@ of $𝐅^3$
         (V_1 + V_2) + V_3 = V_1 + (V_2 + V_3)?
     \]
 
+    \begin{proof}
+        Using the definition of subspace, we have 
+        \begin{align*}
+            (V_1 + V_2) + V_3 &= \{(v_1 + v_2) + v_3: v_1 \in V_1, v_2 \in V_2, v_3 \in V_3\} \\
+            &= \{v_1 + (v_2 + v_3) v_1 \in V_1, v_2 \in V_2, v_3 \in V_3\} \\
+            &= V_1 + (V_2 + V_3) 
+        \end{align*}
+
+        using the associative property of vector addition.
+    \end{proof}
+
+    \item[19] Prove or give a counterexample: If $V_1, V_2, U$ are subspaces of $V$ such that 
     
+    \[V_1 + U = V_2 + U\]
 
+    then $V_1 = V_2$
 
+    \begin{proof}
+        This is a nice application of the idea that subspaces do not have inverses. For example, we could have $V$ as $\R^2$, $V_1 = \{(x, 0): x \in \R\}$, and $V_1 = \{(0, y): y \in \R\}$, and $U = V$. These both add to $V$, but they are not equal.
+    \end{proof}
+    
+    \item[21]
+    
+    Suppose 
+    \[U = \{(x, y, x + y, x - y, 2x) \in \bold F^5: x, y \in F\}\]
+
+    Find a subspace $W$ of $\bold F^5$ such that $\bold F^5 = U \oplus W$.
+
+    \begin{proof}
+        We have 2 variables, so we should have 3 variables in the other one to counteract this. The first 2 terms of $U$ are just $x$ and $y$, which is great because now they cannot vary. We can choose 
+
+        \[W = \{(0, 0, p, q, r) \in \bold F^5: p, q, r \in \bold F\}\]
+
+        And then any vector of the form $(a, b, c, d, e)$ using 
+
+        \begin{align*}
+            x &= a \\
+            y &= b \\
+            p &= c - (x + y) = c - a - b \\
+            q &= d - (x - y) = c - a + b \\
+            r &= e - (2x) = e - 2a
+        \end{align*}
+    \end{proof}
+
+    \item[23] Prove or give a counterexample: If $V_1, V_2, U$ are subspaces of $V$ such that 
+    
+    \[V = V_1 \oplus U \text{  and  } V = V_2 \oplus U \]
+    then $V_1 = V_2$.
+
+    \begin{proof}
+        This is untrue. Choose $V = \R^2$. Let $U = \{(x, 0): x \in \R\}$. Then choose $V_1 = \{(0, b): b \in \R\}$ but $V_2 = \{(a, a): a \in \R\}$.
+
+        These are different subspaces, but it can be shown that their direct sum with $U$ is both $V$.
+    \end{proof}
+
+    \item[24]
+    
+    A function $f: \R \to \R$ is called \emph{even} if 
+
+    \[f(-x) = f(x)\]
+
+    for all $x \in \R$. A function $f: \R \to \R$ is called \emph{odd} if 
+
+    \[f(-x) = -f(x) \]
+    
+    for all $x \in \R$. Let $V_e$ denote the set of real-valued even functions on $\R$ and let $V_o$ denote the set of real-valued odd functions on $\R$. Show that 
+
+    \[\R^{\R} = V_e \oplus V_o \]
+
+    \begin{proof}
+        Given some function $f: \R \to \R$ we can construct it by adding the following functions: 
+
+        We have $g \in V_e$, 
+
+        \[g(x) = \frac{f(x) + f(-x)}2\]
+
+        It is clearly even by symmetry. 
+
+        We can then choose $h \in V_o$,
+
+        \[h(x) = \frac{f(x) - f(-x)}{2}\]
+
+        This is clearly odd. 
+
+        Now we must show that these are the \emph{only} two functions that create $f$. Given some $g$ and $h$, we must have $f(x) - g(x) = h(x)$. This means that
+
+        \begin{align*}
+            f(-x) - g(-x) &= -h(x) \\
+            f(-x) - g(x) &= -h(x) \\
+            f(-x) &= g(x) - h(x) \\
+            f(x) &= g(x) + h(x) \\ 
+            f(-x) + f(x) &= 2g(x) \\
+            g(x) &= \frac{f(-x) + f(x)}{2}
+        \end{align*}
+
+        $h$ comes naturally afterward.
+        
+    \end{proof}
 
 
 
 \end{enumerate}
-
-\end{enumerate}
-
