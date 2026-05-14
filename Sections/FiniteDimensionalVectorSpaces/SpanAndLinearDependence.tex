@@ -1,0 +1,165 @@
+\subsection{Span and Linear Dependence}
+
+Not too bad.
+
+\begin{enumerate}
+    \item[1] Find a list of four distinct vectors in $\bold F^3$ whose span equals 
+    
+    \[\{(x, y, z) \in \bold F^3: x + y + z = 0\}\]
+
+    \begin{proof}
+        Actually, I only need 2 vectors for this.
+
+        \[v_1 = (1, -1, 0) \text{   and   } v_2 = (0, 1, -1)\]
+
+        With these, I can construct any vector that satisfies the properties. I can include some other ones but I am lazy.
+        
+    \end{proof}
+
+    \item[3] Suppose $v_1, \dots, v_m$ is a list of vectors in $V$. For $k \in \{1, \dots, m\}$, let 
+    
+    \[w_k = v_1 + \cdots + v_k\]
+
+    Show that $\linspan(v_1, \dots, v_m) = \linspan(w_1, \dots, w_m)$.
+
+    \begin{proof}
+        Given an arbitrary linear combination of $w_k$, 
+
+        \begin{align*}
+            \sum_{k = 1}^m a_k w_k &= \sum_{k = 1}^m(\sum_{i = 1}^{k} a_i) v_k
+        \end{align*}
+
+        For a given $v_k$, we can construct it from a linear combination of $w$ as $v_k = w_k - w_{k-1}$ where $v_1 = w_1$. Thus, since we can go both ways, the spans are equal.
+
+    \end{proof}
+
+    \item[5] Find a number $t$ such that 
+    
+    \[(3, 1, 4), (2, -3, 5), (5, 9, t)\]
+
+    is not linearly independent in $\bold R^3$
+
+    \begin{proof}
+        If we can find some 
+
+        \[a(3, 1, 4) + b(2, -3, 5) = (5, 9, t)\]
+
+        then our list of vectors in not linearly independent. 
+        This turns into these equations:
+
+        \begin{align*}
+            3a + 2b &= 5 \\
+            a - 3b &= 9 \\
+            4a + 5b &= t 
+        \end{align*}
+        
+        We solve, and we get that $a = 3, b = -2, t = 2$, so it is not linearly independent when \boxed{t = 2}.
+    \end{proof}
+
+    \item[7]
+    
+    \begin{enumerate}
+        \item [(a)] Show that if we think of $\C$ as a vector space over $\R$, then the list $1 + i, 1 - i$ is linearly independent.
+        
+        \begin{proof}
+            Clearly there is no positive multiple of $1 + i$ that creates $1 - i$ you dumbass. The real and imaginary parts will always have the same sign.
+        \end{proof}
+
+        \item[(b)] Show that if we think of $\C$ as a vector space over $\C$, then the list $1 + i, 1 - i$ is linearly dependent.
+        
+        \begin{proof}
+            We can multiple $1 + i$ by 
+
+            \begin{align*}
+                \frac{1 - i}{1 + i} &= \frac{(1 - i)(1 - i)}{(1 + i)(1 - i)} \\
+                &= \frac{-2i}{2} \\
+                &= -i
+            \end{align*}
+
+            to get $1 - i$, therefore its linearly dependent.
+        \end{proof}
+    \end{enumerate}
+
+    \item[9] Prove or give a counterexample: If $v_1, v_2, \dots, v_m$ is a linearly independent list of vectors in $V$, then 
+    \[5v_1 - 4v_2, v_2, v_3, \dots, v_m\]
+
+    is linearly independent.
+
+    \begin{proof}
+        Suppose that $5v_1 - 4v_2, v_2, v_3, \dots, v_m$ was linearly dependent. Then, 
+        
+        \[a_1(5v_1 - 4v_2) + a_2v_2 + \cdots a_mv_m = 5a_1v_1 + (a_2 - 4a_1)v_2 + \cdots + a_mv_m = 0\]
+
+        and we have a contradiction.
+    \end{proof}
+
+    \item[11]
+    
+    Prove or give a counterexample: If $v_1, \dots, v_m$ and $w_1, \dots w_m$ are linearly independent lists of vectors in $V$, then the list $v_1 + w_1, \dots, v_m + w_m$ is linearly independent. 
+
+    \begin{proof}
+        We can construct a counterexample. Let us use $\R^1$ here. $3$ is linearly independent, and so is $-3$, but $3 - 3 = 0$, which is not linearly independent.
+    \end{proof}
+    
+
+    \item[13] Suppose $v_1, \dots v_m$ is linearly independent in $V$ and $w \in V$. Show that 
+    
+    $v_1, \dots v_m$, $w$ is linearly independent $\iff w \notin \linspan(v_1, \dots, v_m)$.
+
+    \begin{proof}
+        We prove the contrapositive in both directions.
+
+        Suppose that $w \in \linspan(v_1, \dots, v_m)$. Then, there is some linear combination of $v_1, \dots, v_m$ and so $v_1, \dots, v_m, w$ is linearly dependent. 
+
+        Suppose that $v_1, \dots, v_m, w$ is linearly dependent. Then, by the linear dependence lemma, there exists some element in this list that is in the span of the previous ones. Because all lists $v_1, \dots v_k, k \leq m$ are linearly independent, $w \in \linspan(v_1, \dots, v_m)$.
+    \end{proof}
+
+    \item[15] Explain why there does not exist a list of six polynomials that is linearly independent in $\mathcal{P}_4(\bold F)$.
+    
+    \begin{proof}
+        We have a list of 5 polynomials that spans $\mathcal{P}_4(\bold F)$. The length of a linearly independent list must be less than or equal to the length of this spanning list, so there does not exist a list of six polynomials that is linearly independent in $\mathcal{P}_4(\bold F)$.
+    \end{proof}
+
+    \item[17] Prove that $V$ is infinite-dimensional if and only if there is a sequence $v_1, v_2, \dots$ of vectors in $V$ such that $v_1, \dots, v_m$ is linearly independent for every positive integer $m$. 
+    
+
+    \begin{proof}
+        Because the length of the span of a vector space must be greater or equal to any given list of linearly independent vectors (Replacement theorem), this sequence means that there is no finite list of vectors that spans $V$.
+
+        If $V$ is infinite-dimensional, we can construct such a sequence $v_1, v_2, \dots$. Begin by choosing an arbitrary vector $v_1 \neq 0$. Then, for each $k \geq 2$, we know that 
+
+        \[\linspan(v_1, \dots, v_{k-1}) \neq V\]
+
+        So there exists some $v_k \notin \linspan(v_1, \dots, v_{k-1}$. Continue for an arbitrary number of steps.
+    \end{proof}
+
+    \item[19] Prove that the real vector space of all continuous real-valued functions on the interval $[0, 1]$ is infinite-dimensional. 
+    
+    \begin{proof}
+        I can construct a sequence of functions that are all linearly independent. In fact, I can use 
+
+        \[1, x, x^2, x^3 \dots\]
+
+        Since each polynomial is uniquely determined by its coefficients, these are linearly independent, and they are also clearly continuous.
+    \end{proof}
+
+    \item[20] Suppose $p_0, p_1, \dots, p_m$ are polynomials in $\mathcal{P}_m(\bold F)$ such that $p_k(2) = 0$ for each $k \in \{0, \dots, m\}$. Prove that $p_0, p_1, \dots, p_m$ is not linearly independent in $\mathcal{P}_m(\bold F)$.
+    
+
+    \begin{proof}
+        For $m = 0$, $p_0 = 0$, which isn't linearly independent.
+
+        For $m > 0$, if $p_k = 0$ for some $k \in \{0, \dots, m\}$, then our set is already not linearly independent.
+
+        Suppose $p_k \neq 0$ for all $k \in \{0, \dots, m\}$. Then, because $p_k(2) = 0$, all $p_k$ has a factor of $(z - 2)$. When finding a linear combination that equals zero, we can factor out all by $(z-2)$. That is 
+
+        \[a_1p_1 + a_2p_2 + \cdots + a_mp_m = 0 \iff (z-2)(a_1\frac{p_1}{z-2} + \cdots + a_m\frac{p_m}{z-2}) = 0\]
+        
+        
+        Now, we have a set of polynomials of degree $m - 1$, but we have $m + 1$ terms. For $\mathcal{F}_{m-1}(\bold F)$ there is a list of $m$ vectors that span it. Thus, the length of a linearly independent list of vectors must be less than or equal to $m$. We have $m + 1$ terms in our list, so we can determine that our list is linearly dependent. 
+    \end{proof}
+
+
+
+\end{enumerate}
+
