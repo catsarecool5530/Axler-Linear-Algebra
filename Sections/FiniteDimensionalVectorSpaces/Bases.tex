@@ -1,0 +1,77 @@
+\subsection{Bases}
+
+This is more or less a merging of the concepts of span and linear independence and showing their relationships. Pretty easy still.
+
+\begin{enumerate}
+    \item Find all vector spaces that have exactly one basis.
+    
+    \begin{proof}
+        We have the vector space of size 1 and dimension 0, $\{0\}$. Its only basis is the empty set. In one dimension, we have the basis for $\F^1_2$, the vector space consisting of only one dimension of the field of size 2, which has the basis $1$. If the field had more elements than 2, then you would be able to obtain another basis by multiplying one of the elements by some non-zero scalar. If the vector space had more than 1 dimension, we could choose other bases, such as $\{1, 1\}, \{0, 1\}$ for $\F_2^2$.
+    \end{proof}
+
+
+    \item[3]
+    \begin{enumerate}
+        \item Let $U$ be the subspace of $\mathbb{R}^5$ defined by
+        \[
+        U=\{(x_1,x_2,x_3,x_4,x_5)\in\mathbb{R}^5:\ x_1=3x_2,\ x_3=7x_4\}.
+        \]
+        Find a basis of $U$.
+
+        \begin{proof}
+            $x_1$ and $x_4$ are useless, so we can just use the standard basis vectors for $\R^3$ except instead using filled in values for $x_1$ and $x_4$. For example, 
+
+            \begin{align*}
+            \{3, 1, 0, 0, 0\} \\
+            \{0, 0, 7, 1, 0\} \\
+            \{0, 0, 0, 0, 1\}
+            \end{align*}
+
+        \end{proof}
+    \end{enumerate}
+
+    \item[5] Suppose $V$ is finite-dimensional and $U$, $W$ are subspaces of $V$ such that
+    $V = U + W$. Prove that there exists a basis of $V$ consisting of vectors in
+    $U \cup W$.
+    
+    \begin{proof}
+        If there is a spanning list of vectors in $U \cup W$, then there is also a basis in $U \cup W$ (since every spanning list can be reduced to a basis).
+        
+        We can thus a basis of $U$ attached to a basis in $W$ as our spanning list. This list spans $V$ because $V = U + W$ implies for every $v \in V, \exists u \in U, w \in W~ s.t.~ v = u + w$, and since we can create any $u + w$ in our new basis, we are done.
+    \end{proof}
+
+    \item[7] Suppose $v_1, v_2, v_3, v_4$ is a basis of $V$. Prove that
+    $v_1 + v_2$, $v_2 + v_3$, $v_3 + v_4$, $v_4$ is also a basis of $V$.
+
+    \begin{proof}
+
+        Clearly, our given vectors are in the span of $v_1, \dots, v_4$. 
+
+        We will show that you can represent $v_1, \dots v_4$ as linear combinations of our given vectors (which will thus show that they have the same span). After we derive one vector, we can use it in the formula of other vectors (implicitly applying a substitution to keep it in our vector set)
+
+        \begin{align*}
+            v_4 = v_4 \\
+            v_3 = (v_3 + v_4) - v_4 \\
+            v_2 = (v_2 + v_3) - v_3 \\
+            v_1 = (v_1 + v_2) - v_2 
+        \end{align*}
+
+        These vectors must also be linearly independent. Suppose that they were not linearly independent. Then, we could remove a vector without changing its span. Now, we have a span of vectors that is \emph{smaller} than a linearly independent list of vectors. Contradiction!
+    \end{proof}
+
+    \item[8] Prove or give a counterexample: If $v_1, v_2, v_3, v_4$ is a basis of $V$
+    and $U$ is a subspace of $V$ such that $v_1, v_2 \in U$ and $v_3 \notin U$ and
+    $v_4 \notin U$, then $v_1, v_2$ is a basis of $U$.
+
+
+    \begin{proof}
+        Nope! Suppose we are working in $\R^4$ and our basis is 
+        
+        $$(1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 1), (0, 0, 0, 1)$$
+        
+        We could have a subspace $U$ that admits basis 
+        
+        $$(1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0)$$
+    \end{proof}
+
+\end{enumerate}
