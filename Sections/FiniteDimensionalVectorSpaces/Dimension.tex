@@ -1,0 +1,237 @@
+\subsection{Dimension}
+
+THESE PROBLEMS GOT A PUNCH TO EM!!! Well, mainly I struggled on 8. The rest were fine.
+
+\begin{enumerate}
+    \item Show that the subspaces of $\mathbb{R}^2$ are precisely $\{0\}$, all lines in $\mathbb{R}^2$ containing the origin, and $\mathbb{R}^2$.
+    
+
+    \begin{proof}
+        We can split this up by the number of dimensions that the basis of the subspace contains. 
+
+        \begin{enumerate}
+            \item 0 dimensions. The only 0 dimensional vector is $\{0\}$.
+            \item 1 dimension. This is a single vector, and it will always produce a line after scaling in $\R^2$. 
+            \item 2 dimensions. Because the 2 dimensions are linearly independent, we know that it spans all of $\R^2$.
+        \end{enumerate}
+    \end{proof}
+
+
+    \item[3] 
+        \begin{enumerate}
+            \item Let $U = \{p \in \mathcal{P}_4(\mathbb{F}) : p(6) = 0\}$. Find a basis of $U$.
+            
+            \begin{proof}
+                If $p(6) = 0$, then all polynomials in $U$ will have a factor of $(x-6)$ (including 0 by technicality). Thus, we can choose the basis 
+
+                \begin{align*}
+                    (x - 6) \\
+                    (x - 6)(x) \\
+                    (x - 6)(x^2)
+                    (x-6)(x^3)
+                \end{align*}
+            \end{proof}
+            \item Extend the basis in (a) to a basis of $\mathcal{P}_4(\mathbb{F})$.
+            
+            \begin{proof}
+                We can simply add the constant, 1. This is now a linearly independent list which has length $\dim \mathcal P_4(\F)$, so it is a basis.
+            \end{proof}
+            \item Find a subspace $W$ of $\mathcal{P}_4(\mathbb{F})$ such that $\mathcal{P}_4(\mathbb{F}) = U \oplus W$.
+            
+            \begin{proof}
+                It is just the subspace given by the span of the additional vector, in this case 
+
+                $$W = \{a : a \in \F\}$$
+            \end{proof}
+        \end{enumerate}
+
+
+        \item[5]
+            \begin{enumerate}
+                \item Let $U = \{p \in \mathcal{P}_4(\mathbb{F}) : p(2) = p(5)\}$. Find a basis of $U$.
+                
+                \begin{proof}
+                    We have a fixed point, which should reduce the dimension by 1 but not in an entirely clear way\dots
+
+                    We know there must not be a polynomial of degree exactly 1 because that would make it impossible to satisfy the constraints, so we can simply choose polynomials that satisfy the property. Such as\dots
+
+                    \begin{align*}
+                        1 \\
+                        (x-2)(x-5) \\
+                        (x-2)(x-5)x \\
+                        (x-2)(x-5)x^2
+                    \end{align*}
+
+                    These 3 vectors are clearly linearly independent and are in $U$. We know that it spans $U$ because it has less than 4 dimensions (otherwise it would equal to $\mathcal P_4(\F)$) and since this is a linearly independent list of 3 it can't be any lower.
+                \end{proof}
+                \item Extend the basis in (a) to a basis of $\mathcal{P}_4(\mathbb{F})$.
+                
+                \begin{proof}
+                    We can plop in $x$ now.
+                \end{proof}
+                \item Find a subspace $W$ of $\mathcal{P}_4(\mathbb{F})$ such that $\mathcal{P}_4(\mathbb{F}) = U \oplus W$.
+                
+                \begin{proof}
+                    That would be $W = \{ax : a \in \F\}$.
+                \end{proof}
+            \end{enumerate}
+
+
+            \item[7]
+            \begin{enumerate}
+                \item Let $U = \{p \in \mathcal{P}_4(\mathbb{R}) : \int_{-1}^{1} p = 0\}$. Find a basis of $U$.
+                
+                \begin{proof}
+                    We can create a list of 4 linearly independent vectors. 3 is the maximum basis size for a (strict) subspace of $\mathcal P_4(\F)$ so we are sure it spans the whole subspace.
+
+                    \begin{align*}
+                        x \\
+                        x^3 \\
+                        x^2 - \frac13 \\
+                        x^4 - \frac15
+                    \end{align*}
+                \end{proof}
+                \item Extend the basis in (a) to a basis of $\mathcal{P}_4(\mathbb{R})$.
+                
+                \begin{proof}
+                    We can add just one more linearly independent element, say, $1$.
+                \end{proof}
+                \item Find a subspace $W$ of $\mathcal{P}_4(\mathbb{R})$ such that $\mathcal{P}_4(\mathbb{R}) = U \oplus W$.
+                
+                \begin{proof}
+                    \[W = \{a : a \in \F\}\]
+                \end{proof}
+            \end{enumerate}
+
+            \item[8] Suppose $v_1, \ldots, v_m$ is linearly independent in $V$ and $w \in V$. Prove that
+                $$\dim \text{span}(v_1 + w, \ldots, v_m + w) \geq m - 1$$
+                
+                \begin{proof}
+                    We can subtract the first vector from the rest to obtain that 
+
+                    $$v_2 - v_1, \dots, v_m - v_1 \in \linspan(v_1 + w, \dots, v_m + w)$$
+
+                    Therefore, 
+
+                    $$\linspan(v_2 - v_1, \dots, v_m - v_1) \leq \linspan(v_1 + w, \dots, v_m + w)$$
+
+                    Because 
+
+                    $$\linspan(v_1, \dots, v_m) = \linspan(v_1, v_2 - v_1, \dots, v_m - v_1) = m$$
+
+                    We have that 
+
+                    $$\linspan(v_1 + w, \dots, v_m + w) \geq \linspan(v_2 - v_1, \dots, v_m - v_1) = m-1$$
+                \end{proof}
+
+
+            \item[9] Suppose $m$ is a positive integer and $p_0, p_1, \dots, p_m \in \mathcal P(\mathbb F)$ are such that each $p_k$ has degree $k$. Prove that
+            
+
+            \[p_0, p_1, \dots, p_m\]
+
+            is a basis of \(\mathcal P_m(\mathbb F)\).
+
+            \begin{proof}
+
+                We prove it by induction. First, $\mathcal P_0(\mathbb F)$ is just $\F$. Any non-zero value in $\F$ is a basis for $\F$. 
+
+                Suppose that $p_0, \dots, p_i$ was a basis for $\mathcal P_i(\F)$. Then, we introduce arbitrary $i + 1$th degree polynomial $p_{i + 1}$. Given some arbitrary polynomial in $\mathcal P_{i + 1}(\F)$, $f(x)$, we can set the coefficient of $p_{i + 1}$ to be the coefficient of the $x^{i + 1}$ term of $f$. Then, what remains after subtracting the $p_{i + 1}$ term out is a polynomial in $\mathcal P_{i}(\F)$. Because we know that $p_0, \dots, p_i$ is a basis of $\mathcal F_i(\F)$, we know we can produce the rest of the polynomial through a linear combination of $p_0, \dots, p_i$. Thus, $p_0, \dots, p_{i + 1}$ spans $\mathcal P_{i + 1}(\F)$. Because $\mathcal P_{i + 1}(\F)$ has dimension $i + 2$ and we have a list of $i + 2$ vectors that span it, we know that this list is also linearly independent, and thus we know that $p_0, \dots, p_{i + 1}$ is a basis for $\mathcal P_{i + 1}(\F)$. 
+
+                Therefore by induction for any $m \in \mathbb N$, $p_0, \dots, p_m$ is a basis for $\mathcal P_m(\F)$.
+            \end{proof}
+
+
+            \item[10] Suppose $m$ is a positive integer. For $0 \leq k \leq m$, let
+            \[
+                p_k(x) = x^k(1-x)^{m-k}.
+            \]
+            Show that $p_0, \ldots, p_m$ is a basis of $\mathcal{P}_m(\mathbb{F})$.
+
+
+            \begin{proof}
+                We can prove this by observing that these polynomials are actually quite similiar to the ones from last exercise. For example, $p_m$ is a polynomial that contains non-zero terms for degree $m$ only. $p_{m-1}$ has non-zero terms for degree terms for degrees $m$ and $m-1$. Thus, we can use the same argument as the previous exercise, using induction, but this time in reverse.
+            \end{proof}
+
+
+            \item[11] Suppose $U$ and $W$ are both four-dimensional subspaces of $\mathbb{C}^6$. Prove that there exist two vectors in $U \cap W$ such that neither of these vectors is a scalar multiple of the other.
+            
+            \begin{proof}
+                The dimension of $U + W$ is at most the dimension of the space itself (6). Therefore, we have that 
+
+                $$6 \geq \dim(U + W) = \dim(U) + \dim(W) - \dim(U \cap W)$$
+
+                $$6 \geq 4 + 4 - \dim(U \cap W)$$
+
+                $$2 \leq \dim(U \cap W)$$
+
+                Now, we can use 2 basis vectors for $\dim(U \cap W)$ as our pair of linearly independent vectors.
+            \end{proof}
+
+
+            \item[15] Suppose $V$ is finite-dimensional and $V_1$, $V_2$, $V_3$ are subspaces of $V$ with $\dim V_1 + \dim V_2 + \dim V_3 > 2 \dim V$. Prove that $V_1 \cap V_2 \cap V_3 \neq \{0\}$.
+            
+            \begin{proof}
+                \begin{align*}
+                    \dim V_1 + \dim V_2 + \dim V_3 &> 2 \dim V \\
+                    &\geq \dim V + \dim V_1 + \dim V_2 - \dim(V_1 \cap V_2) \\
+                    \dim V_3 &> \dim V - \dim(V_1 \cap V_2) \\
+                    &\geq \dim(V_1 \cap V_2) + \dim(V_3) - \dim(V_1 \cap V_2 \cap V_3) - \dim(V_1 \cap V_2) \\
+                    \dim(V_1 \cap V_2 \cap V_3) &> 0
+                \end{align*}
+            \end{proof}
+
+            \item[17] Suppose that $V_1, \ldots, V_m$ are finite-dimensional subspaces of $V$. Prove that $V_1 + \cdots + V_m$ is finite-dimensional and 
+            \[\dim(V_1 + \cdots + V_m) \leq \dim V_1 + \cdots + \dim V_m.\]
+            
+            \begin{proof}
+                We prove by induction on $m$. For $m = 1$, the statement is trivial. 
+                
+                Assume the result holds for $m-1$ subspaces. By the inductive hypothesis, $V_1 + \cdots + V_{m-1}$ is finite-dimensional. Then $V_1 + \cdots + V_m = (V_1 + \cdots + V_{m-1}) + V_m$ is a sum of two finite-dimensional subspaces. By the dimension formula for two subspaces,
+                \[\dim((V_1 + \cdots + V_{m-1}) + V_m) \leq \dim(V_1 + \cdots + V_{m-1}) + \dim V_m.\]
+                
+                By the inductive hypothesis, $\dim(V_1 + \cdots + V_{m-1}) \leq \dim V_1 + \cdots + \dim V_{m-1}$. Therefore,
+                \[\dim(V_1 + \cdots + V_m) \leq \dim V_1 + \cdots + \dim V_{m-1} + \dim V_m.\]
+                
+                Thus by induction, the result holds for all positive integers $m$.
+            \end{proof}
+
+            \item[19] Explain why you might guess, motivated by analogy with the formula for
+the number of elements in the union of three finite sets, that if $V_1$, $V_2$, $V_3$
+are subspaces of a finite-dimensional vector space, then
+\begin{align*}
+\dim(V_1 &+ V_2 + V_3) =  \\
+&\dim V_1 + \dim V_2 + \dim V_3 \\
+&- \dim(V_1 \cap V_2) - \dim(V_1 \cap V_3) - \dim(V_2 \cap V_3) \\
+&+ \dim(V_1 \cap V_2 \cap V_3).
+\end{align*}
+
+Then either prove the formula above or give a counterexample.
+
+\begin{proof}
+    This statement is FALSE. Consider 3 different lines in $\R^2$. We would have $2 = 1 + 1 + 1 - 0 - 0 - 0 + 0 = 3$!
+\end{proof}
+
+
+\item[20] Prove that if $V_1$, $V_2$, and $V_3$ are subspaces of a finite-dimensional vector space, then
+            \begin{align*}
+                \dim(V_1 + V_2 + V_3) &= \dim V_1 + \dim V_2 + \dim V_3 \\
+                &\quad - \frac{\dim(V_1 \cap V_2) + \dim(V_1 \cap V_3) + \dim(V_2 \cap V_3)}{3} \\
+                &\quad + \frac{\dim((V_1 + V_2) \cap V_3) + \dim((V_1 + V_3) \cap V_2) + \dim((V_2 + V_3) \cap V_1)}{3}
+            \end{align*}
+
+            \begin{proof}
+                This is really 3 formulas squished into one. 
+
+                We have 
+                \begin{align*}
+                \dim((V_1 + V_2) + V_3) &= \dim(V_1 + V2) + \dim(V_3) - \dim((V_1 + V_2) \cap V_3) \\
+                &= \dim(V_1) + \dim(V_2) + \dim(V_3) - \dim(V_1 \cap V_2) - \dim((V_1 + V_2) \cap V_3)
+                \end{align*}
+
+                We can apply this again for other permutations to obtain three formulas. Summing them together and dividing by three will give the desired formula. I would write it up but I \emph{really} gotta get to chapter 3 now.
+            \end{proof}
+
+
+
+\end{enumerate}
