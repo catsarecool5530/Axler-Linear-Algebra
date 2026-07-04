@@ -1,0 +1,213 @@
+\subsection{Vector Space of Linear Maps}
+
+Very light on the notes side, probably because this is such a critical new topic. Problems 11 and 17 were basically impossible, I attempted them but it was not possible for me to solve them unfortunately.
+
+
+\begin{enumerate}
+    \item Suppose $b, c \in \mathbb{R}$. Define $T \colon \mathbb{R}^3 \to \mathbb{R}^2$ by
+$T(x, y, z) = (2x - 4y + 3z + b, 6x + cxyz)$.
+Show that $T$ is linear if and only if $b = c = 0$.
+
+    \begin{proof}
+        Suppose that $b \neq 0$. Then, $T(0) = (b, 0) \neq 0$, so its not a linear map. 
+
+        Suppose that $c \neq 0$. Then, look at $T((1, 1, 1) + (1, 1, 1)) = T((2, 2, 2)) = (2, 12 + 8c) \neq T(1, 1, 1) + T(1, 1, 1) = (2, 12 + c)$.
+
+        Now let's show that when $b = 0, c = 0$, $T$ is a linear map. Suppose we have $a, b, \in \R^3$. 
+
+        \begin{align*}
+            T(a + b) &= (2a_1 + 2b_1 - 4a_2 - 4b_2 + 3a_3 + 3b_3, 6a_1 + 6b_1) \\
+            &= (2a_1 - 4a_2 + 3a_3, 6a_1) + (2b_1 - 4b_2 + 3b_3, 6b_1) \\
+            &= T(a) + T(b) 
+        \end{align*}
+    \end{proof}
+
+
+    \item Suppose $b, c \in \mathbb{R}$. Define $T \colon \mathcal{P}(\mathbb{R}) \to \mathbb{R}^2$ by
+    
+$$Tp = \left(3p(4) + 5p'(6) + bp(1)p(2), \int_{-1}^{2} x^3 p(x) \, dx + c \sin p(0)\right)$$
+
+Show that $T$ is linear if and only if $b = c = 0$.
+
+\begin{proof}
+    This thing is so bad honestly its easier to prove that the sum of a linear map and a non-linear map is non-linear. 
+
+    Suppose we have functions $f \in \mathcal L(U, W)$ and $g: U \to W$ (in this case, $U$ and $W$ are just sets who happen to be interpretable as vector spaces). If $f + g$ was a linear map, so would $f + g - f$, which clearly isn't.
+
+    Then, we know that linear maps are preserved under addition, scalar multiplication, and function composition, so everything except the terms with $b$ and $c$ are cleared. $bp(1)p(2)$ is not a linear map (when $b \neq 0$) because it does not preserve scalar multiplication. Multiplying $p$ by a constant multiplites $bp(1)p(2)$ by its square. $c\sin p(0)$ clearly violates both addition and multiplication ($\sin$ isn't linear!). So, $b = c = 0$. Since everything else is a linear map, $T$ must be too.
+\end{proof}
+
+\item Suppose that $T\in\mathcal L(\mathbb F^n,\mathbb F^m)$. Show that there exist scalars $A_{j,k}\in\mathbb F$ for
+\hspace{1em} $j=1,\dots,m$ and $k=1,\dots,n$ such that for every
+\hspace{1em} $(x_1,\dots,x_n)\in\mathbb F^n$,
+\[
+T(x_1,\dots,x_n)=\bigl(\nobreak\sum_{k=1}^n A_{1,k}x_k,\dots,\nobreak\sum_{k=1}^n A_{m,k}x_k\bigr).
+\]
+
+\begin{proof}
+    Consider the standard basis for $\F^n$. The Linear Map Lemma states that a linear map is entirely determined by where it sends its basis vectors. Let 
+    
+    $$Te_i = (A_{1, i}, \dots, A_{m, i})$$
+    
+    Then, 
+
+    \begin{align*}
+        T(x_1, \dots, x_n) &= Tx_1 + \dots + Tx_n \\
+        &= (A_{1,1}, \dots, A_{m, 1}) + \dots + (A_{1, n}, \dots A_{m, n}) \\
+        &= \bigl(\nobreak\sum_{k=1}^n A_{1,k}x_k,\dots,\nobreak\sum_{k=1}^n A_{m,k}x_k\bigr)
+    \end{align*}
+\end{proof}
+
+\item[5] Prove that $\mathcal L(V, W)$ is a vector space, as was asserted in 3.6.
+
+\begin{proof}
+    We are given the following definitions for addition and scalar multiplication:
+
+    Given $S, T, \in \mathcal L(V, W)$ and $ \lambda \in \F$,
+
+    \begin{align*}
+        (S + T)(v) = Sv + Tv \\
+        (\lambda T)(v) = \lambda(Tv)
+    \end{align*}
+
+    Just like the proofs for vector spaces themselves, we can strap our properties to the existing properties of our ring. 
+
+    \begin{enumerate}
+        \item Communativity
+        
+        \begin{align*}
+            (S + T)(v) &= Sv + Tv \\
+            &= Tv + Sv \text{ (Communativity of $W$)} \\
+            &= (T + S)(v)
+        \end{align*}
+
+        \item Associativity 
+        
+        \begin{align*}
+            ((S + T) + H)(v) &= (S + T)(v) + H(v) \\
+            &= Sv + Tv + Hv \\
+            &= Sv + (Tv + Hv) \\
+            &= (S + (T + H))(v)
+        \end{align*}
+
+        \item Additive Inverse
+        
+        Define $(-T)(v) = -Tv$.
+
+        \begin{align*}
+            (T + (-T))(v) = Tv - Tv = 0
+        \end{align*}
+
+        \item Multiplicative Identity
+        
+        Our identity element is 1. This is trivially the identity, shush.
+
+        \item Distributive property
+        
+        \begin{align*}
+            (\lambda(S + T))(v) &= \lambda(S + T)(v) \\
+            &= \lambda(Sv + Tv) \\
+            &= \lambda Sv + \lambda Tv
+            &= (\lambda S + \lambda T)(v)
+        \end{align*}
+
+    \end{enumerate}
+\end{proof}
+
+\item[8] Give an example of a function $\varphi\colon \mathbb{R}^2 \to \mathbb{R}$ such that
+\[
+\varphi(av) = a\varphi(v)
+\]
+for all $a \in \mathbb{R}$ and all $v \in \mathbb{R}^2$, but $\varphi$ is not linear.
+
+\begin{proof}
+    Maybe something like 
+
+    $$f(a, b) = \begin{cases}
+        a & a=b \\
+        0 & a \neq b
+    \end{cases}$$ 
+
+    would work.
+\end{proof}
+
+\item[9] Give an example of a function $\varphi\colon \mathbb{C} \to \mathbb{C}$ such that
+\[
+\varphi(w+z)=\varphi(w)+\varphi(z)
+\]
+for all $w,z\in\mathbb{C}$ but $\varphi$ is not linear. (Here $\mathbb{C}$ is thought
+of as a complex vector space.)
+
+\begin{proof}
+    Something like $\varphi(z) = \bar{z}$ would work. It satisfies additivity but 
+
+    $$i\overline{1 + i} \neq \overline{i(1 + i)}$$
+\end{proof}
+
+\item[10] Prove or give a counterexample: If $q \in \mathcal{P}(\mathbb{R})$ and $T \colon \mathcal{P}(\mathbb{R}) \to \mathcal{P}(\mathbb{R})$ is
+defined by $Tp = q \circ p$, then $T$ is a linear map.
+
+\begin{proof}
+    Not true in general, since something like $x^2$ violates the additivity constraint. ($(1 + 1)^2 \neq 2^2$)
+\end{proof}
+
+
+\item[11] Suppose $V$ is finite-dimensional and $T \in \mathcal L(V)$. Prove that $T$ is a scalar
+multiple of the identity if and only if $ST = TS$ for every $S \in \mathcal L(V)$.
+
+\begin{proof}
+    I cannot seem to find a good solution to this exercise online, so it is skipped. Maybe I will come back to it.
+\end{proof}
+
+\item[12] Suppose $U$ is a subspace of $V$ with $U \neq V$. Suppose $S \in \mathcal{L}(U, W)$ and
+$S \neq 0$ (which means that $Su \neq 0$ for some $u \in U$). Define $T \colon V \to W$ by
+\[
+Tv=
+\begin{cases}
+Sv & \text{if } v \in U,\\
+0 & \text{if } v \in V \text{ and } v \notin U.
+\end{cases}
+\]
+Prove that $T$ is not a linear map on $V$.
+
+\begin{proof}
+    Suppose there was some $u \in U$ where $Su \neq 0$. Then, we have some $v \in V, v \notin U$. $u + v \notin U$, so $T(u + v) = 0$. But also $T(u + v) = Tu + Tv = Tu \neq 0$. Contradiction!
+\end{proof}
+
+\item[15] Suppose $v_1,\dots,v_m$ is a linearly dependent list of vectors in $V$. Suppose
+also that $W\neq\{0\}$. Prove that there exist $w_1,\dots,w_m\in W$ such that no
+$T\in\mathcal L(V,W)$ satisfies $Tv_k=w_k$ for each $k=1,\dots,m$.
+
+\begin{proof}
+    We have some linear combination, $a_i$ not all 0, such that 
+
+    $$a_1v_1 + \dots + a_mv_m = 0$$
+
+    Let $a_i$ be the first non-zero index. We let $w_i$ be an arbitrary non-zero vector in $W$ and all other $j \neq i , w_j = 0$. 
+
+    Then, we have that 
+
+    $$T(a_1v_1 + \dots + a_mv_m) = 0$$ 
+
+    But also 
+    \begin{align*}
+        T(a_1v_1 + \dots + a_mv_m) &= a_1T(v_1) + \dots + a_mT(v_m) \\
+        &= a_1w_1 + \dots + a_mw_m \\
+        &= a_iw_i \\
+        &\neq 0
+    \end{align*}
+
+    So no such $T$ exists.
+    
+\end{proof}
+
+\item[17] Suppose $V$ is finite-dimensional. Show that the only two-sided ideals of
+$\mathcal{L}(V)$ are $\{0\}$ and $\mathcal{L}(V)$.
+A subspace $\mathcal{E}$ of $\mathcal{L}(V)$ is called a two-sided ideal of $\mathcal{L}(V)$ if $TE \in \mathcal{E}$ and
+$ET \in \mathcal{E}$ for all $E \in \mathcal{E}$ and all $T \in \mathcal{L}(V)$.
+
+\begin{proof}
+    This problem is cooked.
+\end{proof}
+
+\end{enumerate}
