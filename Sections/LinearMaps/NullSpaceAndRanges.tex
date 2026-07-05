@@ -1,0 +1,131 @@
+\subsection{Null Spaces and Ranges}
+
+
+\begin{enumerate}
+    \item[1] Give an example of a linear map $T$ with $\dim \text{null } T = 3$ and $\dim \text{range } T = 2$.
+    
+    \begin{proof}
+        $$\dim V = \dim \lnull T + \dim \lrange T$$
+
+        So $V$ is 5 dimensional. Lets use $\F^5$. Then, we can set 
+
+        $$T(a_1, \dots, a_5) = a_1, a_2, 0, 0, 0$$
+
+        The range is clearly 2 dimensional, and the null space is clearly 3 dimensional. 
+    \end{proof}
+
+
+    \item[3] Suppose $v_1,\dots,v_m$ is a list of vectors in $V$. Define
+    $T\in\mathcal L(\mathbb F^m,V)$ by
+    \[T(z_1,\dots,z_m)=z_1v_1+\cdots+z_mv_m.\]
+    \begin{enumerate}
+        \item What property of $T$ corresponds to $v_1,\dots,v_m$ spanning $V$?
+        \begin{proof}
+            $\lrange T = V$ corresponds with spanning V.
+        \end{proof}
+        \item What property of $T$ corresponds to the list $v_1,\dots,v_m$ being linearly independent?
+        \begin{proof}
+            $\lnull T = \{0\}$ corresponds with linear independence.
+        \end{proof}
+    \end{enumerate}
+
+    \item[7] Suppose $V$ and $W$ are finite-dimensional with
+    $2 \leq \dim V \leq \dim W$. Show that
+    \[
+        \{T \in \mathcal{L}(V, W) : T \text{ is not injective}\}
+    \]
+    is not a subspace of $\mathcal{L}(V, W)$.
+
+    \begin{proof}
+        Because $T$ is not injective, we know that $\dim \lnull T \neq 0$. Thus, given $T_1$ where $T_1 \neq 0$, let us define some $T_2$ as 
+
+        $$
+        T_2(v) = \begin{cases}
+            \text{non-zero value} & T_1(v) = 0 \\
+            0 & T_1(v) \neq 0
+        \end{cases}
+        $$
+
+        The specific non-zero value can be defined using basis stuff, but the details are not too important here. What \emph{is} important is that null and range are both subspaces, so by swapping which is 0 and which is non-zero, we will keep these subspaces.
+        
+        $\lrange T_2 = \lnull T_1$. $T_2$ will also be not injective because we swap range and null, and we specify that the range of $T_1$ must be non-zero. Now the null space of $(T_1 + T_2) = \{0\}$, which is injective, so we have our proof that it is not closed under addition (and therefore not a subspace).
+    \end{proof}
+
+    \item[\emph{\textbf{note}}] Big gap here, on account of the problems in between being too easy.
+    
+    \item[18] Suppose $V$ and $W$ are finite-dimensional and that $U$ is a subspace of $V$.
+    Prove that there exists $T \in \mathcal L(V, W)$ such that $\null T = U$ if and only if
+    \[
+        \dim U \geq \dim V - \dim W.
+    \]
+
+    \begin{proof}
+        Suppose there was a linear map $T$ with $\lnull T = U$. Then, 
+
+        \begin{align*}
+            \dim V &= \dim \lnull T + \dim \lrange T \\
+            &= \dim U + \dim \lrange T \\
+            &\leq \dim U + \dim W \\
+            \dim U &\geq \dim V - \dim W
+        \end{align*}
+
+
+        And the converse is also true because trivial (we can construct using basis stuff)
+    \end{proof}
+
+    \item[19] Suppose $W$ is finite-dimensional and $T \in \mathcal L(V, W)$. Prove that $T$ is injective
+if and only if there exists $S \in \mathcal L(W, V)$ such that $ST$ is the identity operator
+on $V$.
+
+    \begin{proof}
+        Suppose that $ST$ was the identity operator. Then, if $v_1, v_2 \in V, v_1 \neq v_2$ and $Tv_1 = Tv_2$, then $STv_1 = STv_2$, which implies $v_1 = v_2$, contradiction.
+
+        Suppose that $T$ is injective. Suppose $V$ has basis vectors $v_1, \dots, v_n$ and $W$ has basis vectors $w_1, \dots, w_n$ for some subspace of $W$ (we know that $\dim V = \dim W$ because otherwise we would not have an injection). Also, $Tv_i = w_i$ (if it did not map to the basis, it would not be injective, proof is trivial but you use range for it). Then we could also define $Sw_i = v_i$, which is a linear map (trivially), and we are done.
+
+    \end{proof}
+
+    \item[21] Suppose $V$ is finite-dimensional, $T \in \mathcal L(V, W)$, and $U$ is a subspace of $W$.
+Prove that $\{v \in V : Tv \in U\}$ is a subspace of $V$ and
+\[
+    \dim\{v \in V : Tv \in U\} = \dim \lnull T + \dim(U \cap \lrange T).
+\]
+
+    \begin{proof}
+        First,  $\{v \in V : Tv \in U\}$ is a subspace of $V$. Let's name it $X$. Let $x_1, x_2 \in X$, then $T(x_1 + x_2) = Tx_1 + Tx_2 \in X$. Same works with scalar multiples. 
+
+        Next, let's define $T_1 \in \mathcal L(X, W)$, $T_1v = Tv$ for all $v \in X$. By the fundamental theorem of linear maps, 
+
+        \begin{align*}
+            \dim X &= \dim \lnull X + \dim \lrange X \\
+            \dim X &= \dim \lnull T + \dim \lrange X \\
+            &\text{ (we know this because any $v$ that maps to 0 is in $X$)} \\
+            \dim \{v \in V : Tv \in U\} &= \dim \lnull T + \dim(U \cap \lrange T)
+        \end{align*}
+    \end{proof}
+
+
+    \item[24] Suppose $\dim V = 5$ and $S, T \in \mathcal{L}(V)$ are such that $ST = 0$.
+    \begin{enumerate}
+        \item Prove that $\dim \lrange TS \leq 2$.
+        \begin{proof}
+            Because $\dim \lnull ST \leq \dim \lnull S + \dim \lnull T$ and $\dim \lnull ST = 5$, we know that the sum of $\dim \lnull S + \dim \lnull T$ is at \emph{least} 5. We also know that $\dim \lrange TS \leq \min\{\dim \lrange S, \dim \lrange T\}$. The maximum minimum here is clearly 2, so $\dim \lrange TS \leq 2$.
+        \end{proof}
+        \item Give an example of $S, T \in \mathcal{L}(\mathbb{F}^5)$ with $ST = 0$ and $\dim \lrange TS = 2$.
+        \begin{proof}
+            We can shuffle around the basis vector to get a nice non-communative thing going, too lazy to write it out though.
+        \end{proof}
+    \end{enumerate}
+
+
+    \item[28] Suppose $D \in \mathcal L(\mathcal P(\mathbb R))$ is such that
+    \[\deg(Dp)=\deg p-1\]
+    for every nonconstant polynomial $p\in\mathcal P(\mathbb R)$. Prove that $D$ is surjective.
+
+    \begin{proof}
+        First, we prove that constants get mapped to 0. 
+        
+        Let $D_n$ be $D$ but in $\mathcal L(\mathcal P_n(\R), \mathcal P_{n - 1}(\R))$. $D_1 \neq 0$, so it ranges all of $\R$, which is our base case.
+
+        Suppose that $D_{m-1}$ was surjective. Suppose $D{m}(x^m) = p_m$. Given arbitrary $m-1$th degree polynomial $p$, since $p_m$ is a $m-1$th degree polynomial, we can find a scalar multiple such that $[x^{m-1}]p = [x^{m-1}]p_m$, lets say its $a$. Then, we subtract that out of $p$. What we are left with is a $m-2$th degree polynomial, and since $D_{m-1}$ is surjective and $D_{m}$ includes $D_{m-1}$, have some polynomial that maps to $p - ap_m$, and we are done.
+    \end{proof}
+\end{enumerate}
