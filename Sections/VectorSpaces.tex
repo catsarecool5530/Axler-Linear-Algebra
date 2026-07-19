@@ -8,7 +8,7 @@ These exercises are really easy but I am always scared that my proofs of these a
 I do odds.
 
 \begin{enumerate}
-    \item[1] Show that $𝛼 + 𝛽 = 𝛽 + 𝛼$ for all $𝛼, 𝛽 ∈ \mathbb{C}$.
+    \item[1] Show that $\alpha + \beta = \beta + \alpha$ for all $\alpha, \beta \in \mathbb{C}$.
     
     \begin{proof}
         Let $\alpha = a + bi$ and $\beta = c + di$ where $a, b, c, d \in \mathbb{R}$.
@@ -27,11 +27,11 @@ I do odds.
         \end{align*}
     \end{proof}
 
-    \item[3] Show that $(𝛼𝛽)𝜆 = 𝛼(𝛽𝜆)$ for all $𝛼, 𝛽, 𝜆 ∈ \mathbb{C}$.
+    \item[3] Show that $(\alpha\beta)\lambda = \alpha(\beta\lambda)$ for all $\alpha, \beta, \lambda \in \mathbb{C}$.
 
     Distribute, multiply, then rearrange terms using the communitivity of the reals to get the answer. It is quite tedious, so I won't do it here.
 
-    \item[5] Show that for every $𝛼 ∈ \mathbb{C}$, there exists a unique $𝛽 ∈ \mathbb{C}$ such that $𝛼 + 𝛽 = 0$.
+    \item[5] Show that for every $\alpha \in \mathbb{C}$, there exists a unique $\beta \in \mathbb{C}$ such that $\alpha + \beta = 0$.
     
     \begin{proof}
         Let $\alpha = a + bi$. Then, let $\beta = -a - bi$. We can observe that 
@@ -46,9 +46,9 @@ I do odds.
     
     Again, this is a tedious problem where you just multiply it out. Of course, I can represent this number as $e^{\frac{\pi}{3}i}$ but that's cheating.
 
-    \item[9] Find $𝑥 ∈ 𝐑^4$ such that
+    \item[9] Find $x \in \mathbb{R}^4$ such that
 
-    $(4, −3, 1, 7) + 2𝑥 = (5, 9, −6, 8)$
+    $(4, -3, 1, 7) + 2x = (5, 9, -6, 8)$
 
     \begin{proof}
         This is vector addition, so we can apply the definition. 
@@ -74,7 +74,7 @@ I do odds.
 This one introduces the concept of a vector space in an abstract manner and gives a few unorthodox examples.
 
 \begin{enumerate}
-    \item[1] Prove that $−(−𝑣) = 𝑣$ for every $𝑣 ∈ V$
+    \item[1] Prove that $-(-v) = v$ for every $v \in V$
 
     \begin{proof}
         $-(-v)$ is the additive inverse of $-v$. Therefore,
@@ -88,7 +88,7 @@ This one introduces the concept of a vector space in an abstract manner and give
         As desired.
     \end{proof}
 
-    \item[3] Suppose $𝑣, 𝑤 ∈ 𝑉$. Explain why there exists a unique $𝑥 ∈ 𝑉$ such that $𝑣 + 3𝑥 = w$.
+    \item[3] Suppose $v, w \in V$. Explain why there exists a unique $x \in V$ such that $v + 3x = w$.
     
     \begin{align*}
         v + 3x &= w \\
@@ -99,7 +99,7 @@ This one introduces the concept of a vector space in an abstract manner and give
 
     \item[5] Show that in the definition of a vector space (1.20), the additive inverse
 condition can be replaced with the condition that
-$$0𝑣 = 0 \text{ for all } 𝑣 ∈ 𝑉.$$
+$$0v = 0 \text{ for all } v \in V.$$ 
 Here the 0 on the left side is the number 0, and the 0 on the right side is the
 additive identity of $V$.
 
@@ -121,9 +121,9 @@ additive identity of $V$.
         Therefore $(-1)v$ is the additive inverse for all $v \in V$.
     \end{proof}
     
-    \item[7] Suppose $𝑆$ is a nonempty set. Let $𝑉^𝑆$ denote the set of functions from $𝑆$ to $𝑉$.
-Define a natural addition and scalar multiplication on $𝑉^𝑆$
-, and show that $𝑉^𝑆$
+    \item[7] Suppose $S$ is a nonempty set. Let $V^S$ denote the set of functions from $S$ to $V$.
+Define a natural addition and scalar multiplication on $V^S$
+, and show that $V^S$
 is a vector space with these definitions.
 
 \begin{proof}
@@ -197,11 +197,11 @@ is a vector space with these definitions.
 This is where it ramps up a little bit, we are doing some linear algebra now! This idea of ``subspaces'' is interesting\dots
 
 \begin{enumerate}
-    \item[1] For each of the following subsets of $𝐅^3$
+    \item[1] For each of the following subsets of $\mathbb{F}^3$
 , determine whether it is a subspace
-of $𝐅^3$
+of $\mathbb{F}^3$
     \begin{enumerate}
-        \item $\{(𝑥_1, 𝑥_2, 𝑥_3) ∈ 𝐅^3∶ 𝑥_1 + 2𝑥_2 + 3𝑥_3 = 0\}$
+        \item $\{(x_1, x_2, x_3) \in \mathbb{F}^3: x_1 + 2x_2 + 3x_3 = 0\}$
         
         \begin{proof}
             $(0, 0, 0)$ is in our set, so we have the additive identity. Consider vectors $x$ and $y$ in our set, and add them. 
@@ -232,7 +232,7 @@ of $𝐅^3$
 
             These are all the conditions, so we can say that our set is a subspace of $\F^3$.
         \end{proof}
-        \item $\{(𝑥_1, 𝑥_2, 𝑥_3) ∈ 𝐅^3: 𝑥_1 + 2𝑥_2 + 3𝑥_3 = 4\}$
+        \item $\{(x_1, x_2, x_3) \in \mathbb{F}^3: x_1 + 2x_2 + 3x_3 = 4\}$
 
         \begin{proof}
             Consider the element $(1, 0, 1)$ which is in our set because $1 + 2 \cdot 0 + 3 \cdot 1 = 4$ and it is in $\F^3$. Now consider multiplying it by the scalar 2 to create the element $(2, 0, 2)$. Unfortunately, $2 + 2\cdot 0 + 3 \cdot 2 = 8 \neq 4$, so this set does not fulfill the closure under scalar multiplication condition.
@@ -351,7 +351,7 @@ of $𝐅^3$
         From here on, suppose $u \in V_1 \backslash V_2 \cup V_3$, $v \in V_2 \backslash V_1 \cup V_3$. Note that if these elements did not exist one set would be a subset of another or we would have an element in exactly two subsets. Then, to be closed, $u + v \in V_3$ since by the Exercise 12 lemma we cannot have $u + v$ be in either $V_1$ or $V_2$. Consider $a, b$ in $\F$ where $a, b \neq 0, a - b \neq 0$. We also have $au + v \in V_3$ and $bu + v \in V_3$ since scalar multiplication by a non-zero constant should not change which subspaces a vector is in, so $au + v - (bu - v) = (a-b)u \in V_3$. However, $u$ was explicitly only in $V_1$, so we have a contradiction and $V_1 \cup V_2 \cup V_3$ is not actually a subspace! Note that this proof does not work in $\F_2$ because we do not have 2 different numbers that satisfy the properties of $a$ and $b$. 
     \end{proof}
 
-    \item[15] Suppose $𝑈$ is a subspace of $𝑉$. What is $𝑈 + 𝑈$?
+    \item[15] Suppose $U$ is a subspace of $V$. What is $U + U$?
     \begin{proof}
         We use the definition of subspace addition. 
         \begin{align*}
