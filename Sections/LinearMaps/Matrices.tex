@@ -1,0 +1,165 @@
+\subsection{Matrices}
+
+The book-proofs in this chapter were a lot harder than previous chapters, but I could still follow them fine.
+
+The problems were \emph{really} easy compared to last subchapter, it makes me wonder what sort of demonic influence that subchapter had\dots
+
+Highlight to \#2, its a great problem!
+
+\begin{enumerate}
+    \item[1] Suppose $T\in\mathcal{L}(V,W)$. Show that, with respect to any choices of bases of $V$ and $W$, the matrix of $T$ has at least $\dim\big(\operatorname{range} T\big)$ nonzero entries.
+    
+    \begin{proof}
+        The dimension of the range of $T$ is equivalent to the rank of $\mathcal M(T)$, since matrix-vector multiplication is a linear combination of each column of $\mathcal M(T)$. Therefore, there is some set of $\dim \lrange T$ linearly independent vectors. Each of these vectors must not equal zero, so there are at least $\dim \lrange T$ non-zero entries.
+    \end{proof}
+
+    \item[2] Suppose $T \in \mathcal{L}(V, W)$, where $V$ and $W$ are finite-dimensional and nonzero. Prove that $\dim \operatorname{range} T = 1$ if and only if there exist a basis of $V$ and a basis of $W$ such that with respect to these bases, all entries of $\mathcal{M}(T)$ equal 1.
+    
+    \begin{proof}
+        If $\dim \lrange T = 1$, then there is some $w_b \in W$ where every column of $\mathcal M(T)$ is a multiple of $w_b$. 
+
+        We would like to show there is some basis of $W$ such that $w_b = w_1 + \dots + w_m$. This itself is equivalent to showing that there is some linear combination that has all non-zero entries (proof will be presented when returning the other direction). 
+
+        Let us state the lemma we want to prove.
+
+        \begin{lemma*}
+            Given vector $v \in V$, $v \neq 0$, there exists a basis $v_1, \dots, v_n$ such that 
+            
+            $$v = a_1v_1 + \dots + a_nv_n$$
+            and
+            $$a_i \neq 0, i \in \{1, \dots, n\}$$
+
+
+        \end{lemma*}
+
+        \begin{proof}
+            Choose $v_1 = v$. We then extend this to a basis, $v_1, \dots, v_n$. Because for a given linear combination, each element has only one representation, we know that 
+
+            $$v = v_1 + 0v_2 + \dots + 0v_n$$
+
+            We now define a new basis, $v_1 + \dots + v_n, v_2, \dots, v_n$. It remains a basis (unproved but obvious). Using this basis, 
+
+            $$v = 1(v_1 + \dots + v_n) - 1v_2 - \dots - 1v_n$$
+
+            None of the coefficients are zero, so we have constructed a solution.
+        \end{proof}
+
+        Now we can proceed with the main proof.
+
+        If the entries of the matrix are all 1, it is obvious that $\dim \lrange T = 1$. 
+
+        Then, we just need to prove the other way. We are given $T \in \mathcal L(V, W)$, $\dim \lrange T = 1$. 
+
+        Choose some $v_1 \in V$ where $Tv_1 \neq 0$, and let $Tv_1 = w$. By our lemma, we can construct a basis $t_1, \dots, t_n$ where $w = a_1t_1 + \dots + a_nt_n$, $a_i \neq 0$. We define our new basis, then as 
+
+        $$w_i = a_it_i$$
+
+        Now, 
+
+        $$w = w_1 + \dots + w_n$$
+
+        As intended. 
+
+        As for the rest of the basis of $V$, we know that 
+
+        \begin{align*}
+            \dim \lrange T + \dim \lnull T &= \dim V \\
+            1 + \dim\lnull T &= n \\
+            \dim\lnull T &= n - 1
+        \end{align*}
+
+        So I can define $v_2, \dots, v_n$ as a basis for $\lnull T$. We know it is LI from $v_1$ obviously. So, we can use 
+
+        $$v_1, v_1 + v_2, \dots, v_n + v_1$$
+
+        as our basis. 
+
+        For any $j \in \{2, \dots, n\}$, $T(v_1 + v_j) = T(v_1) + T(v_j) = w_1 + \dots + w_n$, so our matrix is all ones as desired!
+    \end{proof}
+
+    \item[4] Suppose that $D\in\mathcal L\big(\mathcal P_3(\mathbb R),\mathcal P_2(\mathbb R)\big)$ is the differentiation map defined by $Dp=p'$. Find a basis of $\mathcal P_3(\mathbb R)$ and a basis of $\mathcal P_2(\mathbb R)$ such that the matrix of $D$ with respect to these bases is
+
+    \[
+    [D] = \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0
+    \end{pmatrix}.
+    \]
+
+    \begin{proof}
+        \[
+        \begin{blockarray}{ccccc}
+            & x^3 & x^2 & x & 1 \\
+            \begin{block}{c(cccc)}
+                3x^2 & 1 & 0 & 0 & 0 \\
+                2x & 0 & 1 & 0 & 0 \\
+                1 & 0 & 0 & 1 & 0 \\
+            \end{block}
+        \end{blockarray}
+        \]
+
+        I learned blockarray for this!
+    \end{proof}
+
+    \item[12] Prove that matrix multiplication is associative. In other words, suppose
+    $A$, $B$, and $C$ are matrices of sizes such that $(AB)C$ is defined. Explain why
+    $A(BC)$ is defined as well, and prove that
+
+    \[ (AB)C = A(BC). \]
+
+    \begin{proof}
+        We can treat $A, B$, and $C$ as linear maps, in which they are just functions.
+
+        Thus, 
+
+        \[(AB)Cv = A(B(C(v))) = A(BC)v\]
+    \end{proof}
+
+    \item[13] Suppose $A$ is an $n$-by-$n$ matrix and $1 \le j, k \le n$. Show that the entry in
+    row $j$, column $k$, of $A^3$ (which is defined to mean $AAA$) is
+    \[
+        \sum_{p=1}^n \sum_{r=1}^n A_{j,p} A_{p,r} A_{r,k}.
+    \]
+
+    \begin{proof}
+        \begin{align*}
+            (AA)_{j, k} &= \sum_{r = 1}^n A_{j, r}A_{r, k} \\
+            (A(AA))_{j, k} &= \sum_{p=1}^n A_{j, p} (AA)_{p, k} \\
+            (A(AA))_{j, k} &= \sum_{p=1}^n A_{j, p} \sum_{r = 1}^n A_{p, r}A_{r, k} \\
+            (AAA)_{j, k} &= \sum_{p=1}^n \sum_{r = 1}^n A_{j, p}  A_{p, r}A_{r, k} 
+        \end{align*}
+        
+    \end{proof}
+
+    \item[16] Suppose $A$ is an $m$-by-$n$ matrix with $A \ne 0$. Prove that the rank of $A$ is $1$ if and only if there exist $(c_1, \dots, c_m) \in \mathbb{F}^m$ and $(d_1, \dots, d_n) \in \mathbb{F}^n$ such that
+    $A_{j,k} = c_j d_k$
+    for every $j = 1, \dots, m$ and every $k = 1, \dots, n$.
+
+    \begin{proof}
+        When the rank of $A$ is 1, all of the columns are a multiple of a single non-zero column. We can set $c_1, \dots, c_m$ to be that column, then $d_1, \dots, d_n$ to be the actual multiples. It is clear this is a biconditional.
+    \end{proof}
+
+    \item[17] Suppose $T\in\mathcal L(V)$, and $u_1,\dots,u_n$ and $v_1,\dots,v_n$ are bases of $V$. Prove that the following are equivalent:
+    \begin{enumerate}
+        \item $T$ is injective.
+        \item The columns of $\mathcal M(T)$ are linearly independent in $\mathbb F^{n\times 1}$.
+        \item The columns of $\mathcal M(T)$ span $\mathbb F^{n\times 1}$.
+        \item The rows of $\mathcal M(T)$ span $\mathbb F^{1\times n}$.
+        \item The rows of $\mathcal M(T)$ are linearly independent in $\mathbb F^{1\times n}$.
+    \end{enumerate}
+    Here $\mathcal M(T)$ denotes $\mathcal M\big(T,(u_1,\dots,u_n),(v_1,\dots,v_n)\big)$.
+
+    \begin{proof}
+        (a) and (b) are equivalent because any $Tv$ is a linear combination of the columns of $\mathcal M(T)$ using the $v$ for the coefficients. Assuming the columns of $\mathcal M(T)$ are linearly independent, that makes every resultant vector unique, which satisfies the definition of injectivity. If $T$ was injective, then we can show by contradiction that the columns of $\mathcal M(T)$ must be linearly independent.
+
+        (b) and (c) are equivalent because $\dim \F^{n \times 1} = n$, so any length n list of linearly independent vectors will also span the whole space, and vice versa.
+
+        The same reasoning applies to (d) and (e).
+
+        Because row rank and column rank are identical, (c) and (d) are equivalent since the dimensions of both must be $n$ (and therefore they both span the space).
+
+        Combining all of these, we have proved the equivalences.
+    \end{proof}
+
+\end{enumerate}
