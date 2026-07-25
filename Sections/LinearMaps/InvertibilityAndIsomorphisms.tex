@@ -1,0 +1,148 @@
+\subsection{Invertibility and Isomorphisms}
+
+I think it was nice that change of basis was presented before eigenvectors\dots
+
+The notes for this chapter were pretty long but all the exercises were pretty easy, with none of them that I attempted needing a google or anything.
+
+\begin{enumerate}
+    \item[1] Suppose $T \in \mathcal L(V, W)$ is invertible. Show that $T^{-1}$ is invertible and that this inverse is $(T^{-1})^{-1}$.
+    
+    \begin{proof}
+        Well, we would want 
+
+        \[T^{-1}(T^{-1})^{-1} = I\]
+
+        and
+
+        \[(T^{-1})^{-1}T^{-1}=I\]
+
+        and $T$ satisfies both, so it is the inverse of $T^{-1}$.
+    \end{proof}
+
+    \item[3] Suppose $V$ is finite-dimensional and $T \in \mathcal L(V)$. Prove that the following are equivalent.
+    
+    \begin{enumerate}
+        \item T is invertible
+        \item $Tv_1, \dots Tv_n$ is a basis of V for every basis $v_1, \dots, v_n$.
+        \item $Tv_1, \dots, Tv_n$ is a basis for $V$ for some basis $v_1, \dots, v_n$ of $V$.
+    \end{enumerate}
+
+    \begin{proof}
+        We prove (a) and (b) are equivalent by showing that they are both equivalent to injectivity. (a) is already proven to be equivalent to injectivity. 
+
+        Suppose that $Tv_1, \dots, Tv_n$ is a basis for $V$ for some basis $v_1, \dots, v_n$ of $V$. Suppose we have $u, v, w \in V$ where $Tv = w$ and $Tu = w$. $T(v - u) = Tv - Tu = 0$. If $v \neq u$, then that implies that we could construct a non-zero linear combination of $Tv_1, \dots, Tv_n$ that equaled 0, which is a contradiction. 
+
+        Suppose that $T$ is injective. This implies surjectivity, so each $w \in V$ has some unique $u \in V$ such that $Tu = w$. Given some basis of $V$, $v_1, \dots, v_n$, $Tv_i$ forms a basis since there is a unique linear combination for all elements of $V$, the definition of a basis.
+
+        Notice I did not mention any particular basis, which means it works for any and all bases.
+    \end{proof}
+    
+
+    \item[5] Suppose $V$ is finite-dimenstional, $U$ is a subspace of $V$, and $S \in \mathcal L(U, V)$. 
+    
+    Prove that there exists an invertible linear map $T$ from $V$ to itself such that $Tu = Su$ for every $u \in U$ if and only if $S$ is injective.
+
+    \begin{proof}
+        Suppose $S$ is not injective. Then $T$ cannot be injective either, and so it also cannot be invertible.
+
+        Suppose that $S$ is injective. Let $u_1, \dots, u_m$ be a basis for $U$. Then, $Su_1, \dots Su_m$ is a basis for some subspace of V. Both can be extended and we can construct some basis for $V$, $u_1, \dots, u_m, v_1, \dots, v_n$ where the list $Tu_1, \dots Tu_m, Tv_1, \dots, Tv_n$ are bases for $V$. Then, $T$ will be invertible, so we have constructed a solution.
+    \end{proof}
+
+
+    \item[6] Suppose that $W$ is finite-dimensional and $S, T \in \mathcal L(V, W)$.
+    
+    Prove that $\lnull S = \lnull T$ if and only if there exists an invertible $E \in \mathcal L(W)$ such that $S = ET$.
+
+    \begin{proof}
+        Suppose there exists an invertible $E$ such that $S = ET$. For $v \in V$, if $T$ maps $v$ to 0, then so must $S$ because $E(0) = 0$. If $S$ maps $v$ to 0 then so must $T$ because $E(v) = 0$ if and only if $v = 0$ (because it is injective).
+
+
+        Suppose that $\lnull S = \lnull T$. Consider the basis of $\lnull S$ (or $\lnull T$, they are the same), $v_1, \dots, v_n$. We can extend this basis to all of $V$ as $v_1, \dots, v_n, u_1, \dots, u_m$. Let the subspace formed from the basis $u_1, \dots, u_m$ be $U$. 
+        
+        We will show that $S$ and $T$ are injective in $U$. Suppose that there is some $u_1, u_2$ such that $Su_1 = Su_2$. Then, we would have $S(u_1 - u_2) = 0$, but $u_1 - u_2$ is in $\lnull S$. The only element in both $U$ and $\lnull S$ is 0, therefore $u_1 - u_2 = 0$ and $u_1 = u_2$. Same logic applies to $T$.
+        
+        Since $T$ is injective in $U$, $Tu_1, \dots, Tu_m$ are linearly independent in $W$. We can arbitrarily extend this to a basis $Tu_1, \dots, Tu_m, w_1, \dots w_r$, where $\dim W = m + r$. We also define a basis $Su_1, \dots, Su_m, p_1, \dots, p_r$ using the same principle.
+        
+        Now we can define $E$. 
+
+        \[E(Tu_i) = Su_i\]
+
+        and 
+
+        \[E(w_i) = p_i\]
+
+        $E$ is well defined because $Tu_1, \dots, Tu_m, w_1, \dots, w_r$ is a basis in $W$. 
+        
+        $E$ is invertible because $Su_1, \dots, Su_m, p_1, \dots, p_r$ is a basis in $W$. $S = ET$ because the bases all map to the same values (no I will not show it but it is obvious).
+    \end{proof}
+
+    \item[9] Suppose $V$ is finite-dimensional and $T: V \to W$ is a surjective linear map of $V$ onto $W$. Prove that there is a subspace $U$ of $V$ such that $T_{|U}$ is an isomorphism of $U$ onto $W$. 
+    
+    \quad \emph{Here $T_{|U}$ means that the function $T$ is restricted to $U$. Thus $T_{|U}$ is the function whose domain is $U$, with $T_{|U}$ defined by $T_{|U}(u) = Tu$ for every $u \in U$.}
+
+    \begin{proof}
+        Consider arbitrary basis of $W$, $w_1, \dots, w_m$. Because $T$ is surjective, we can find some vectors $v_1, \dots, v_m$ such that $Tv_i = w_i$ for all $i \in \{1, \dots, m\}$. $v_1, \dots, v_m$ is linearly independent, since if it wasn't, $w_1, \dots, w_m$ wouldn't be a basis. Now we define $U$ as the subspace formed from $v_1, \dots, v_m$ as a basis. $\dim \lrange T = \dim W$, and it remains $\dim W$ restricted to $U$ since $w_1, \dots, w_m$ is basis for $W$.
+
+
+        \begin{align*}
+            \dim U &= \dim \lrange T_{|U} + \dim \lnull T_{|U} \\
+            m &= m + \dim \lnull T_{|U} \\
+            \dim \lnull T_{|U} &= 0
+        \end{align*}
+
+        Therefore $T_{|U}$ is an invertible linear map, the definition of isomorphism.
+        
+    \end{proof}
+
+    \item[12] Suppose $V$ is finite-dimensional and $S, T, U \in \mathcal L(V)$ and $STU = I$. Show that $T$ is invertible and that $T^{-1} = US$.
+    
+    \begin{proof}
+        If $T$ mapped some non-zero vector to 0, there would be no way to recover it back to a non-zero value, so $T$ is invertible. This also shows that $U$ and $S$ are invertible.
+        
+        The inverse of $U$ is $ST$ and the inverse of $S$ is $TU$. 
+
+        \begin{align*}
+            STU = I \\
+            STU(ST) = ST \\
+            ST(US)T = ST \\
+            S^{-1}T(US)TT^{-1} = S^{-1}STT^{-1} \\
+            T(US) = I \\
+            US = T^{-1}
+        \end{align*}
+
+        Therefore we done.
+    \end{proof}
+
+
+    \item[15] Suppose $T \in \mathcal(V)$ and $v_1, \dots, v_m$ is a list in $V$ such that $Tv_1, \dots, Tv_m$ spans $V$. Prove that $v_1, \dots, v_m$ spans $V$. 
+    
+    \begin{proof}
+        Suppose that $v_1, \dots, v_m$ was not linearly independent. Then, there is some $a_1v_1+ \dots+ a_mv_m = 0$ with some $a_i \neq 0$. Then, $T(a_1v_1 + \dots + a_mv_m) = a_1Tv_1 + \dots a_mTv_m = 0$, which is a contradiction since $Tv_1, \dots, Tv_m$ is supposed to be a basis. Thus $v_1, \dots, v_m$ is linearly independent. By the linear map lemma, it also spans $V$ so it is a basis.
+    \end{proof}
+
+
+    \item[18] Show that $V$ and $\mathcal L(\F, V)$ are isomorphic vector spaces.
+    
+    \begin{proof}
+        Well, $\F$ is just $\F^1$, and any map $T \in \mathcal L(\F, V)$ is entirely defined by $T1$, since all other numbers are scalar multiples of $T1$. So we can define our function $S \in \mathcal L(\mathcal L(\F, V), V)$ as $S(T) = T1$. This function has a clear inverse (that being taking some vector $v$ to the function that maps $1$ to $v$), so we have an isomorphism.
+    \end{proof}
+
+    \item[20] Suppose $q \in \mathcal P(\R)$. Prove that there exists a polynomial $p \in \P(\R)$ such that $q(x) = (x^2 + x)p''(x) + 2xp'(x) + p(3)$ for all $x \in \R$.
+    
+    \begin{proof}
+        Define $T \in \P(\R)$ where $Tp = (x^2 + x)p'' + 2xp' + p(3)$. We want to prove that $T$ is surjective in $\P(\R)$.
+
+        Consider the basis $1, x, \dots, x^n$ for vector space $\P_n(\R)$. $Tx^n$ is linearly independent from all previous polynomials because it is the only polynomial of degree $n$. Thus, $T1, Tx, \dots, Tx^n$ forms a basis, so it is surjective, so we can always construct $q$.
+    \end{proof}
+
+    \item[24] Suppose $A$ and $B$ are square matrices of the same size and $AB = I$. Prove that $BA = I$.
+    
+    \begin{proof}
+        \begin{align*}
+            AB = I \\
+            B(AB) = B \\
+            (BA)B = B \\
+            BA = I 
+        \end{align*}
+    \end{proof}
+\end{enumerate}
