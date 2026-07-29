@@ -1,0 +1,151 @@
+\subsection{Products and Quotients}
+
+These problems all right, yep.
+
+\begin{enumerate}
+    \item[3] Suppose $V_1, \dots, V_m$ are vector spaces. Prove that
+    $\mathcal{L}(V_1 \times \cdots \times V_m, W)$ and
+    $\mathcal{L}(V_1, W) \times \cdots \times \mathcal{L}(V_m, W)$ are
+    isomorphic vector spaces.
+
+    \begin{proof}
+        Consider some map $T \in \L(V_1 \times \dots \times V_m, W)$. Consider some $V_i$ and have the vector in that position be non-zero and all other vectors in the list be 0. This is clearly equivalent to some $T_i \in \L(V_i, W)$. It also uniquely defines $T$ since $T(v_1, \dots, v_m) = T(v_1, 0, \dots, 0) + T(0, v_2, 0, \dots, 0) + \dots + T(0, \dots, v_m)$. Thus we have a invertible map and therefore an isomorphism.
+    \end{proof}
+
+    \item[6] Suppose that $v, x$ are vectors in $V$ and that $U, W$ are subspaces of $V$ such
+that $v + U = x + W$. Prove that $U = W$.
+
+    \begin{proof}
+        If $U$ is a subspace of $V$ and $v \in V$ has $0 \in v + U$, then $v + U = 0 + U$. This is because cosets are disjoint, and $0 + U$ will contain 0, so no other quotient space will contain it.
+
+        We have 
+
+        \begin{align*}
+            v + U &= x + W \\
+            (v - x) + U &= W \\
+        \end{align*}
+        This should be fine since its equivalent to subtracting $x$ from all elements of $v + U$ and $x + W$, which should maintain equality. Since $W$ includes 0, we know that $(v - x) + U = 0 + U$, so $U = W$.
+
+
+    \end{proof}
+
+    \item[8] (a) Suppose $T \in \mathcal{L}(V, W)$ and $c \in W$. Prove that
+    $\{x \in V : Tx = c\}$ is either the empty set or is a translate of
+    $\lnull T$.
+
+    \begin{proof}
+        If $c \notin \range T$, then trivially $\{x \in V: Tx = c\}$ is empty. 
+
+        If $c \in \range T$, then there is some $v \in V$ such that $Tv = c$. We will show that $\{x \in V: Tx = c\} = v + \null T$. Consider another $w \in V$ such that $Tw = c$. Then, $T(v - w) = Tv - Tw = 0$, so $v - w \in \null T$. Since $w = v - (v - w) \in v + \null T$, we are done.
+    \end{proof}
+
+    (b) Explain why the set of solutions to a system of linear equations such as
+    3.27 is either the empty set or is a translate of some subspace of
+    $\mathbf{F}^n$.
+
+    \begin{proof}
+        Since it is equivalent to the above, obviously.
+    \end{proof}
+
+    \item[9] Prove that a nonempty subset $A$ of $V$ is a translate of some subspace of $V$ if
+    and only if $\lambda v + (1 - \lambda)w \in A$ for all $v, w \in A$ and all $\lambda \in \mathbf{F}$.
+
+    \begin{proof}
+        Suppose that $A$ was a translate, $v_1 + U$. Then, for all $v, w \in A$ we can write them as $v = v_1 + u_1$ and $w = v_1 + u_2$. Then, for all $\lambda \in \F$,
+
+        \begin{align*}
+            \lambda v + (1 - \lambda) w &= \lambda(v_1 + u_1) + (1 - \lambda)(v_1 + u_2) \\
+            &= \lambda v_1 + \lambda u_1 + v_1 - \lambda v_1 + u_2 - \lambda u_2 \\
+            &= (v_1) + (\lambda u_1 + u_2 - \lambda u_2) \\
+            &\in v_1 + U
+        \end{align*}
+
+
+        Suppose that $\lambda v + (1 - \lambda)w \in A$ for all $v, w, \in A$ and all $\lambda \in \F$.
+
+        Fix some $w \in A$, and consider any $v \in A$. We will show that $v - w$ forms a subspace of $V$. For all $\lambda \in \F$, 
+
+        \begin{align*}
+            \lambda v + (1 - \lambda) w &= \lambda v + w - \lambda w \\
+            &= \lambda(v - w) + w 
+        \end{align*}
+
+        This looks a lot like the translate formula, if only $\lambda(v - w)$ formed a subspace. This amounts to proving closure under scalar multiplication and vector addition. Scalar multiplication is trivial; $\lambda$ is right there!
+
+        Consider arbitrary $v_1, v_2 \in -v + A$.
+
+        \begin{align*}
+            \lambda(v_1 + v) + (1 - \lambda)(v_2 + v) &= \lambda v_1 + \lambda v + v_2 + v - \lambda v_2 - \lambda v \\
+            &= \lambda v_1 - \lambda v_2 + v
+        \end{align*}
+
+        Set $\lambda = 1$, and we easily see closure under addition. Thus, $A$ is a translate.
+    \end{proof}
+
+    \item[11] Suppose
+\[
+U = \{(x_1, x_2, \dots) \in \mathbf{F}^{\infty} : x_k \ne 0 \text{ for only finitely many } k\}.
+\]
+(a) Show that $U$ is a subspace of $\mathbf{F}^{\infty}$.
+
+\begin{proof}
+    $U$ is closed under addition because if you add 2 vectors with only finitely many non-zero fields, the number of non-zero fields stays finite (since it is at most the sum of the number of non-zero fields of each of the operands). It is also closed under scalar multiplication since scalar multiplication does not change the number non-zero elements (unless it is multiplication by 0, in which is resets it to 0). 
+\end{proof}
+
+(b) Prove that $\mathbf{F}^{\infty}/U$ is infinite-dimensional.
+
+\begin{proof}
+    Consider the set of vectors where the $i$th vector has a 1 in the $kp_i$th slot for all $k \in \mathbb{N}$, where $p_i$ is the $i$th prime number. For any pair of vectors in this list, their sum will be multiples of 2 different primes, so they are super linearly independent, and since you would need to add an infinite amount of numbers to get from one to the other, none of these are equivalent in $\F^{\infty}/U$ either.
+    
+    This basis is infinite, so $\F^{\infty}/U$ is infinite dimensional.
+\end{proof}
+
+    \item[13] Suppose $U$ is a subspace of $V$ such that $V/U$ is finite-dimensional.
+    Prove that $V$ is isomorphic to $U \times (V/U)$.
+
+    \begin{proof}
+        Consider each element of $V/U$, and arbitrarily choose some vector inside the translate to be the ``starter'' vector, $v$. Now choose an arbitrary $u$ in this translate. $v - u \in U$, so given some element of $U \times (V/U)$, we can retrieve $v$ and $v - u$. This also entirely determines the vector, and all vectors are covered, and its unique, so its an isomorphism. 
+    \end{proof}
+
+    \item[16] Suppose $\varphi \in \mathcal{L}(V, \mathbf{F})$ and $\varphi \neq 0$. Prove that
+    $\dim\bigl(V/(\null\varphi)\bigr) = 1$.
+
+    \begin{proof}
+        By the rank-nullity theorem, 
+
+        \begin{align*}
+            \dim V &= \dim \lnull \varphi + \dim \range \varphi \\
+        \end{align*}
+
+        Because we know that $\varphi \neq 0$, we know that $\dim \range \varphi > 0$. But $\F$ only has one dimension, so $\dim \range \varphi \leq 1$. Therefore, $\dim \range \varphi = 1$.
+
+        \begin{align*}
+            \dim V &= \dim \null \varphi + 1 \\
+            \dim \null \varphi &= \dim V - 1
+        \end{align*}
+
+        It is already proven that $\dim V/U = \dim V - \dim U$. So, 
+
+        \begin{align*}
+            \dim V/\null \varphi &= \dim V - \dim \null \varphi \\
+            &= \dim V - (\dim V - 1) \\
+            &= 1
+        \end{align*}
+    \end{proof}
+
+
+    \item[19] Suppose $T \in \mathcal{L}(V, W)$ and $U$ is a subspace of $V$. Let $\pi$
+    denote the quotient map from $V$ onto $V/U$. Prove that there exists
+    $S \in \mathcal{L}(V/U, W)$ such that $T = S \circ \pi$ if and only if
+    $U \subseteq \null T$.
+
+    \begin{proof}
+        Suppose that $U \subseteq \null T$. Then, for all $v_1, v_2 \in v + U$, $Tv_1 = Tv_2$. Then, the choice of $S$ is obvious. 
+
+        $$S(v + U) = Tv$$
+
+        This holds no matter which element we use as the vector in $v + U$ since they're all a difference of some element in $\null T$. Thus we have constructed out map.
+
+        Suppose that $U \not \subseteq \null T$. Then, there is some $u \in U \backslash \null T$. Given some vector $v \in V$, we have that $\pi(v) = \pi(v + u)$, but $Tv \neq T(v + u)$. Since $S$ can't differentiate between what was originally $v$ and what was originally $v + u$, $S$ cannot exist.
+    \end{proof}
+\end{enumerate}
