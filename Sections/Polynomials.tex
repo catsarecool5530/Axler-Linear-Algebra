@@ -1,0 +1,229 @@
+\clearpage
+\section{Polynomials}
+
+Short section on polynomials! The proofs over the fundamental theorem of algebra kinda went over my head, especially the more analysis-y parts, but I guess that's sort of intended. They don't matter for the purposes of these problems anyways.
+
+\begin{enumerate}
+    \item[1] Suppose $w, z \in \mathbb{C}$. Verify the following equalities and inequalities.
+    
+    For all of these, assume that $z = a + bi$, and that $w = c + di$. 
+
+    \begin{enumerate}
+
+        \item $z + \bar{z} = 2\operatorname{Re} z$
+        \begin{proof}
+             $z + \bar{z} = a + bi + a - bi = 2a = 2\Re(z)$. 
+        \end{proof}
+        \item $z - \bar{z} = 2(\operatorname{Im} z)i$
+        \begin{proof}
+            \begin{align*}
+                z - \bar{z} &= a + bi - a + bi \\
+                &= 2bi \\
+                &= 2\Im(z)
+            \end{align*}
+        \end{proof}
+        \item $z\bar{z} = |z|^2$
+        \begin{proof}
+            \begin{align*}
+                z\bar{z} &= (a + bi)(a - bi) \\
+                &= a^2 + b^2 \\
+                &= |z|^2
+            \end{align*}
+        \end{proof}
+        \item $\overline{w+z} = \bar{w} + \bar{z}$ and $\overline{wz} = \bar{w}\bar{z}$
+        \begin{proof}
+            \begin{align*}
+                \overline{z + w} &= \overline{a + bi + c + di} \\
+                &= \overline{(a + c) + (b + d)i} \\
+                &= (a + c) - (b + d)i \\
+                &= a - bi + c - di \\
+                &= \bar z + \bar w 
+            \end{align*}
+        \end{proof}
+        \item $\overline{\bar{z}} = z$
+        \begin{proof}
+            \begin{align*}
+                \overline{\bar z} &= \overline{\overline{a + bi}} \\
+                &= \overline{a - bi} \\
+                &= a + bi \\
+                &= z
+            \end{align*}
+        \end{proof}
+        \item $|\operatorname{Re} z| \le |z|$ and $|\operatorname{Im} z| \le |z|$
+        \begin{proof}
+            $|z| = \sqrt{(\Re z)^2 + (\Im z)^2}$. Since $x^2$ is always greater or equal to zero, we have that $|\Re z| \leq |z|$ and $|\Im z| \leq |z|$.
+        \end{proof}
+        \item $|\bar{z}| = |z|$
+        \begin{proof}
+            \begin{align*}
+                |z| &= \sqrt{(\Re z)^2 + (\Im z)^2} \\
+                &= \sqrt{(\Re z)^2 + (-\Im z)^2} \\
+                &= |\bar z|
+            \end{align*}
+        \end{proof}
+        \item $|wz| = |w||z|$
+        \begin{proof}
+
+            \begin{align*}
+                |wz| &= \sqrt{(\Re wz)^2 + (\Im wz)^2} \\
+                &= \sqrt{(ac - bd)^2 + (ad + bc)^2} \\
+                &= \sqrt{(ac)^2 - 2abcd + (bd)^2 + (ad)^2 + 2abcd + (bc)^2} \\
+                &= \sqrt{(ab)^2 + (ac)^2 + (bc)^2 + (bd)^2} \\
+                &= \sqrt{(a^2 + b^2)(c^2 + d^2)} \\
+                &= \sqrt{((\Re w)^2 + (\Im w)^2)((\Re z)^2 + (\Im z)^2)} \\
+                &= \sqrt{(\Re w)^2 + (\Im w)^2}\sqrt{(\Re z)^2 + (\Im z)^2} \\
+                &= |w||z|
+            \end{align*}
+        \end{proof}
+    
+    \end{enumerate}
+
+
+        \item[2] Prove that if $w, z \in \C$, then $\bigl||w| - |z|\bigr| \leq |w - z|$.
+        
+        \begin{proof}
+            \begin{align*}
+                \bigl||w| - |z|\bigr|^2 &= (|w| - |z|)^2 \\
+                &= |w|^2 - 2|w||z| + |z|^2 \\
+                &= |w|^2 - 2|wz| + |z|^2 \\
+                &\leq |w|^2 + |z|^2 - 2\Re(wz) \\
+                &= w\bar w + z \bar z - w \bar z - \bar w z \\
+                &= (w - z)(\bar w - \bar z) \\
+                &= |w - z|^2
+            \end{align*}
+
+            Take square roots and we're done!
+        \end{proof}
+
+        \item[4] Suppose $m$ is a positive integer. Is the set
+\[
+\{0\} \cup \{p \in \mathcal{P}(\mathbb{F}) : \deg p = m\}
+\]
+a subspace of $\mathcal{P}(\mathbb{F})$?
+
+\begin{proof}
+    Nope. 2 polynomials can subtract to a non-zero polynomial of smaller degree.
+\end{proof}
+
+\item[7] Suppose that $m$ is a nonnegative integer, $z_1, \dots, z_{m+1}$ are distinct elements of $\mathbb{F}$, and $w_1, \dots, w_{m+1} \in \mathbb{F}$. Prove that there exists a unique polynomial $p \in \mathcal{P}_m(\mathbb{F})$ such that $p(z_k) = w_k$ for each $k = 1, \dots, m + 1$.
+
+    \begin{proof}
+        We can construct a basis for $\mathcal P_m(\F)$ as follows:
+
+        \[
+        p_i(x) = (x - z_1)(x - z_2) \dots (x - z_{i-1})(x - z_{i+1}) \dots (x - z_{m+1}) + 1
+        \]
+
+        These vectors are linearly independent since they are non-zero at $z_i$ and zero at all other $z_j$. Since $\dim \mathcal P_m(\F) = m + 1$, these vectors form a basis.
+
+        We can also construct a polynomial $p$ such that $p(z_k) = w_k$ for each $k = 1, \dots, m + 1$ as follows:
+
+        \[
+        p(x) = \sum_{i=1}^{m+1} w_i p_i(x)
+        \]
+
+        Since the $p_i$ are linearly independent, this polynomial is unique.
+    \end{proof}
+
+
+    \item[10] For $p \in \mathcal{P}(\mathbb{R})$, define $Tp\colon \mathbb{R} \to \mathbb{R}$ by
+    \[
+    (Tp)(x) =
+    \begin{cases}
+        \dfrac{p(x) - p(3)}{x - 3} & \text{if } x \neq 3,\\
+        p'(3) & \text{if } x = 3
+    \end{cases}
+    \]
+    for each $x \in \mathbb{R}$. Show that $Tp \in \mathcal{P}(\mathbb{R})$ for every polynomial $p \in \mathcal{P}(\mathbb{R})$ and also show that $T\colon \mathcal{P}(\mathbb{R}) \to \mathcal{P}(\mathbb{R})$ is a linear map.
+
+    \begin{proof}
+        First we show that $\frac{p(x) - p(3)}{x - 3}$ is a polynomial for $x \neq 3$. Suppose that 
+
+        \[p(x) = a_0 + a_1x + \dots + a_nx^n\]
+
+        Then, 
+
+        \begin{align*}
+            \frac{p(x) - p(3)}{x - 3} &= \frac{a_1(x-3) + \dots + a_n(x^n-3^n)}{x-3} \\
+            &= a_1 + a_2(x + 3) + a_3(x^2 + 3x + 3^2) + \dots + a_n(x^{n-1} + 3x^{n-2} + \dots + 3^{n-1})
+        \end{align*}
+
+        Since each of those terms above has a factor of $x-3$ (by difference of powers factorization), we can divide out the $x - 3$ (if $x\neq 3$) to retrieve a polynomial. If we show that this polynomial equals $p'(3)$ at $x = 3$ we will be done. Now, 
+
+        \[p'(3) = a_1 + 3 \cdot 2a_2 + 3^2 \cdot 3a_3 + \dots + 3^n \cdot na_n\]
+
+        When plugging 3 into the equation we get above, we see that they are indeed idenitcal, since all the $x^{n - i - 1}3^i$ terms just turn into $3^{n - 1}$, and they all collect up.
+
+        This is a linear map because it simply uses the coefficients of the polynomial and multiplies them by a different polynomial than the standard $x^i$. It is clearly additive and 0 is mapped to 0.
+
+    \end{proof}
+
+    \item[12] Suppose $m$ is a nonnegative integer and $p \in \mathcal{P}_m(\mathbb{C})$ is such that there are distinct real numbers
+    $x_0, x_1, \dots, x_m$ with $p(x_k) \in \mathbb{R}$ for each $k = 0, 1, \dots, m$.
+    Prove that all coefficients of $p$ are real.
+
+    \begin{proof}
+        We can use the basis from lagrangian interpolation in order to create a polynomial. Since it is a basis, we know it is unique, but langrange polynomials only have real coefficients, so we are already done.
+    \end{proof}
+
+    \item[13] Suppose $p\in\mathcal P(\mathbb F)$ with $p\neq0$. Let
+    \[U=\{pq:\ q\in\mathcal P(\mathbb F)\}.\]
+    (a) Show that $\dim\mathcal P(\mathbb F)/U=\deg p$. 
+    (b) Find a basis of $\mathcal P(\mathbb F)/U$.
+
+    \begin{proof}
+        Suppose that we have some $g \in \P(\F)$, $\operatorname{deg} g \ge \operatorname{deg} p$. Then, by the polynomials division algorithm, we have some $q, r \in \P(\F)$ such that 
+
+        \[g = qp + r\]
+
+        Then, $g + U = r + U$. Therefore, all elements of $\P(\F) / U$ are equivalent to a translate of degree less than $\operatorname{deg} p$. Additionally, no polynomials with degree less than $\operatorname{deg} p$ can be reduced down further. Therefore, $\dim \P(\F) / U = \operatorname{dim} p$.
+
+        Such a basis could simply be $1 + U, x + U, \dots, x^{\operatorname{deg} p - 1} + U$.
+    \end{proof}
+
+    \item[14] Suppose $p, q \in \mathcal{P}(\mathbb{C})$ are nonconstant polynomials with no zeros in common.
+Let $m = \deg p$ and $n = \deg q$. Use linear algebra as outlined below in (a)--(c)
+to prove that there exist $r \in \mathcal{P}_{n-1}(\mathbb{C})$ and $s \in \mathcal{P}_{m-1}(\mathbb{C})$ such that
+$rp + sq = 1$.
+    
+    \begin{enumerate}
+        \item Define $T \colon \mathcal{P}_{n-1}(\mathbb{C}) \times \mathcal{P}_{m-1}(\mathbb{C}) \to \mathcal{P}_{m+n-1}(\mathbb{C})$ by
+        \[
+        T(r,s) = rp + sq.
+        \]
+        Show that the linear map $T$ is injective.
+
+        \begin{proof}
+            Given polynomials $r_1, s_1, r_2, s_2$ where $T(r_1, s_1) = T(r_2, s_2)$, that either $r_1 = r_2$ and $s_1 = s_2$ or $r_1 \ne r_2$ and $s_1 \ne s_2$. This because if only one were equal and the other disequal, we could subtract and divide everything out into a contradiction.
+
+            Suppose there existed some $r_1, s_1, r_2, s_2$, $r_1 \ne r_2$ and $s_1 \ne s_2$ such that 
+
+            $$T(r_1, s_1) = T(r_2, s_2)$$
+
+            Then 
+
+            \begin{align}
+                r_1p + s_1q &= r_2p + s_2q  \\
+                r_1p - r_2p &= s_2q - s_1q \\
+                (r_1 - r_2)p &= (s_2 - s_1)q
+            \end{align}
+
+            We know that $r_1 - r_2 \ne 0$ and $s_2 - s_1 \ne 0$. 
+
+            But this means that any zero of $p$ is also a zero of $q$, and since $p$ is non-constant, there will always be at least one such zero. However, $p$ and $q$ have no zeroes in common, so we have a contradiction!
+        \end{proof}
+        
+        \item Show that the linear map $T$ in (a) is surjective.
+        
+        \begin{proof}
+            Since $\dim \P_{n-1}(\C) \times \P_{m-1}(\C) = \dim P_{m + n - 1}(\C) = m + n$, injectivity implies surjectivity.
+        \end{proof}
+        
+        \item Use (b) to conclude that there exist $r \in \mathcal{P}_{n-1}(\mathbb{C})$ and $s \in \mathcal{P}_{m-1}(\mathbb{C})$ such
+        that $rp + sq = 1$.
+
+        \begin{proof}
+            Therefore, since $T$ is surjective, there will always be some polynomials that have $rp + sq = 1$.
+        \end{proof}
+    \end{enumerate}
+\end{enumerate}

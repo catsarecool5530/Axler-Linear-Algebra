@@ -12,6 +12,7 @@
 \usepackage{float}
 \usepackage{geometry}
 \usepackage{blkarray}
+\usepackage{enumitem}
 \geometry{margin=0.5in}
 \usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
 \renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
@@ -44,5 +45,10 @@
 \renewcommand{\null}{\text{null }}
 
 \include{Sections/LinearMaps.tex}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\include{Sections/Polynomials}
 
 \end{document}
