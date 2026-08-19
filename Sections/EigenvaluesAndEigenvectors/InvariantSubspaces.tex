@@ -1,0 +1,174 @@
+\subsection{Invariant Subspaces}
+
+There are a \emph{lot} of exercises in this subchapter! For this reason I'm solving every 4th problem-ish rather than every problem. Fun fact: this is the first subchapter where I decided not to \TeX\ out problem 1!
+
+\begin{enumerate}
+    \item[3] Suppose $T \in \mathcal{L}(V)$. Prove that the intersection of every collection of
+        subspaces of $V$ invariant under $T$ is invariant under $T$.
+
+    \begin{proof}
+        Suppose we have a collection of subspaces $V_1, \dots, V_n$ which are all invariant under
+        some $T \in \mathcal{L}(V)$. Now consider some $v \in V_1 \cap \dots \cap V_n$. What do we
+        know about $Tv$? Well, we know that $v \in V_i$ for each $i$ because of the invariance
+        of each of these subspaces. Therefore, $Tv \in V_i$ for each $i$, which means
+        $Tv \in V_1 \cap \dots \cap V_n$, so we are done.
+    \end{proof}
+
+    \item[4] Prove or give a counterexample: If $V$ is finite-dimensional and $U$ is a subspace
+        of $V$ that is invariant under every operator on $V$, then $U = \{0\}$ or $U = V$.
+
+    \begin{proof}
+        Suppose that $U$ satisfied our condition but did not equal $\{0\}$ or $V$. Then there is some vector $u \in U$, $u \neq 0$, and $v \in V \backslash U$, $v \neq 0$. Now we can just choose an arbitrary operator where $Tu = v$ and we have a counterexample, and thus a contradiction.
+    \end{proof}
+
+    \item[5] Suppose $T \in \mathcal{L}(\mathbf{R}^{2})$ is defined by $T(x, y) = (-3y, x)$. Find the eigenvalues of $T$.
+    
+    \begin{proof}
+        \begin{align*}
+            T(x, y) &= (-3y, x) \\
+            \lambda(x, y) &= (-3y, x) \\
+            \lambda x &= -3y \\
+            \lambda y &= x \\
+            \lambda^2y &= -3y \\
+            \lambda^2 &= -3
+        \end{align*}
+
+        No real eigenvalues :(.
+    \end{proof}
+
+    \item[13] Suppose $T \in \mathcal{L}(V)$. Suppose $S \in \mathcal{L}(V)$ is invertible.
+    \begin{enumerate}
+        \item[(a)] Prove that $T$ and $S^{-1}TS$ have the same eigenvalues.
+
+        \begin{proof}
+            We are given some $\lambda$ that is an eigenvalue of $T$. Let's say there is a corresponding eigenvector, $v \in V$. Thus, 
+
+            \begin{align*}
+                S^{-1}TS(S^{-1}v) &= S^{-1}Tv \\
+                &= S^{-1}(\lambda v) \\
+                &= \lambda S^{-1} v
+            \end{align*}
+
+            Therefore, $S^{-1}v$ is the eigenvector of $S^{-1}ST$, which has the corresponding eigenvalue which is equal. We can also go in reverse, too.
+
+
+        \end{proof}
+
+        \item[(b)] What is the relationship between the eigenvectors of $T$ and the eigenvectors of $S^{-1}TS$?
+
+        \begin{proof}
+            They are changes of basis from each other, namely the change $S^{-1}$.
+        \end{proof}
+    \end{enumerate}
+
+    \item[16] Suppose $v_1, \dots, v_n$ is a basis of $V$ and $T \in \mathcal{L}(V)$. Prove that if $\lambda$ is an eigenvalue of $T$, then
+        \[
+            |\lambda| \le n \max\{ |\mathcal{M}(T)_{j,k}| : 1 \le j,k \le n\},
+        \]
+        where $\mathcal{M}(T)_{j,k}$ denotes the entry in row $j$, column $k$ of the matrix of $T$ with respect to the basis $v_1, \dots, v_n$. 
+
+    \begin{proof}
+        Consider the corresponding eigenvector, $v$, and its representation, $v = a_1v_1 + \dots + a_nv_n$. Let's consider the basis vector with the largest scalar multiplication, call it $v_i$ with a multiplication of $a_i$. After applying $T$, it will have a scalar multiplication of $\lambda a_i$. But also, 
+
+        \begin{align*}
+        \lambda |a_i| &= |\sum_{j = 1}^n \M(T)_{i, j}a_j| \\
+        \lambda &\le \sum_{j = 1}^n \M(T)_{i, j} \frac{|a_j|}{|a_i|} \\
+        &\le \sum_{j=1}^n |\M(T)_{i, j}| \\
+        &\le n \max\{|\M(T)_{j, k}|: 1 \le j, k \le n\}
+        \end{align*}
+
+        Triangle equality is used here, on the second step.
+    \end{proof}
+
+    \item[23] Suppose $V$ is finite-dimensional and $S, T \in \L(V).$ Prove that $ST$ and $TS$ have the same eigenvalues.
+    
+    \begin{proof}
+        Consider some eigenvalue, $\lambda$ for $ST$, with an eigenvector $v$. Then
+
+        \begin{align*}
+            STv &= \lambda v \\
+            TSTv &= \lambda Tv \\
+            TS(Tv) &= \lambda Tv 
+        \end{align*}
+
+        So $\lambda$ is an eigenvalue of $TS$ as well, with the eigenvector being $Tv$.
+
+        There's a special case at $\lambda = 0$ but I don't feel like proving it.
+    \end{proof}
+
+    \item[36] Suppose that $\lambda_1, \dots, \lambda_n$ is a list of distinct positive numbers. Prove that the
+list $\cos(\lambda_1 x), \dots, \cos(\lambda_n x)$ is linearly independent in the vector space of
+real-valued functions on $\mathbf{R}$.
+
+    \begin{proof}
+Consider the vector space given by $\operatorname{span}(\cos(\lambda_1 x), \dots, \cos(\lambda_n x)$. Consider the double differentiation operator, and its eigenvalues:
+
+$$D^2\cos(\lambda_i x) = -\lambda_i^2\cos(\lambda_i x)$$
+
+Therefore, $\cos(\lambda_i x)$ is an eigenvector of $D^2$, with a corresponding eigenvalue of $-\lambda_i^2$. Since $\lambda_i$ is always positive, this is guarenteed to be unique. Since each of the vectors is associated with a certain unique eigenvalue, we know they are linearly independent.
+
+    \end{proof}
+
+\item[37] Suppose $V$ is finite-dimensional and $T \in \mathcal L(V)$. Define $\mathcal A \in \mathcal L(\mathcal L(V))$ by
+
+$$\mathcal A(S) = TS$$
+
+for each $S \in \mathcal L(V)$. Prove that the set of eigenvalues of $T$ equals the set of eigenvalues of $\mathcal A$. 
+
+\begin{proof}
+
+What does it mean for $\mathcal A(S)$ to have an eigenvalue? It would be if there existed some $S \in \mathcal L(V)$ such that $TS = \lambda S$. In other words, where $(TS - \lambda S) = 0$, so $(T - \lambda I)S = 0$. We know that $S \neq 0$, so there is some $v \in V$ such that $Sv \ne 0$. Applying it, we see that $(T - \lambda I)Sv = 0$, so $v$ is an eigenvector of $T$ with an eigenvalue of $\lambda$.
+
+Now we show the other direction. Consider some eigenvalue $\lambda$ of $T$ such that $(T - \lambda I)v = 0$ for some $v \in V$. Then, we can choose the following function:
+
+$$
+Su = \begin{cases}
+u & u = av \text{ for some } a \in \mathbb R \\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+Since its non-zero, its a valid eigenvector, and its eigenvalue is $\lambda$ because
+
+$$TSu = \begin{cases}
+\lambda u & u = av \text{ for some } a \in \mathbb R \\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+Which means $TS = \lambda S$.
+\end{proof} 
+
+\item[39] Suppose $V$ is finite-dimensional and $T \in \mathcal L(V)$. Prove that $T$ has an eigenvalue if and only if there exists a subspace of $V$ with dimension $\dim V - 1$ that is invariant under $T$.
+
+
+\begin{proof}
+If we have $\dim \operatorname{null} V > 0$, then we have a eigenvalue of 0. Then, we can choose some vector $v_1 \in V$ such that $Tv_1 = 0$. Extend this to a basis, and the subspace generated from $v_2, \dots, v_n$ is invariant, since its range is still equal to $\text{range } T$. Therefore, from now on we can consider only the situation where $\dim \operatorname{null} V = 0$.
+
+Suppose that $V$ has an eigenvalue, $\lambda \ne 0$, with an associated eigenvector, $v_1$. Extend $v_1$ to a basis of $V$, $v_1, \dots, v_n$. Now consider the subspace generated from $v_2, \dots, v_n$, $U$. Suppose that $U$ was not invariant. Then exists some $v = a_2v_2 + \dots + a_nv_n$ such that $Tv = v_1$. But we also know that $T(\frac 1\lambda v_1) = v_1$, and we also know that $T$ is injective from the fact that $\dim \operatorname{null} T = 0$, so we have a contradiction. 
+\end{proof}
+
+\item[40] Suppose $S, T \in \mathcal L(V)$ and $S$ is invertible. Suppose $p \in \mathcal P(\mathbb F)$ is a polynomial. Prove that 
+
+$$p(STS^{-1}) = Sp(T)S^{-1}$$
+
+\begin{proof}
+Firstly, consider that 
+
+\begin{align*}
+(STS^{-1})^n &=\underbrace{(STS^{-1})\cdots(STS^{-1})}_{n \text{ times}} \\
+&=S\underbrace{(TS^{-1}S)\cdots(TS^{-1}S)}_{n - 1 \text{ times}} TS^{-1} \\ 
+&=ST^nS
+\end{align*}
+
+
+Now if we plug each in, we can use this equivalence + distributive property to complete the proof.
+\end{proof}
+
+\item[43] Suppose that $V$ is finite-dimensional, $\dim V > 1$, and $T \in \mathcal L(V)$. Prove that $\{p(T): p \in \mathcal P(\mathbb F)\} \ne \mathcal L(V)$.
+
+
+\begin{proof}
+Polynomials commute, but linear maps of dimension $> 1$ do not. Therefore, we could not possibly have $\{p(T): p \in \mathcal P(\F)\} = \L(V)$.
+\end{proof}
+\end{enumerate}
