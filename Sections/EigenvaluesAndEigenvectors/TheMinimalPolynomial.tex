@@ -1,0 +1,188 @@
+\subsection{The Minimal Polynomial}
+
+The proofs in this subchapter were definitely more convoluted than they maybe should have been? But I guess Axler just wants to show off some more ``clever'' proofs for these\dots
+
+\begin{enumerate}
+    \item[1] Suppose $T \in \mathcal L(V)$. Prove that 9 is an eigenvalue of $T^2$ if and only if 3 or -3 is an eigenvalue of $T$.
+    
+    \begin{proof}
+        Suppose 3 or -3 are eigenvalues of $T$. Then there is some eigenvector, $v$, where
+
+        $$T(Tv) = T(-?3v) = 9v$$
+
+        Next, suppose that 9 was an eigenvalue for $T^2$. Then there is some $v$ such that, 
+
+        \begin{align*}
+            (T^2 - 9I)v = 0 \\
+            (T - (-3)I)(T - 3I)v = 0 
+        \end{align*}
+
+        So either $(T - 3I)v = 0$, which makes 3 an eigenvalue, or $(T - (-3)I)((T - 3I)v) = 0$, which makes -3 an eigenvalue (with eigenvector $(T - 3I)v$).
+    \end{proof}
+
+
+\item[4] Suppose $\mathbb F = \mathbb C$, $T \in \mathcal L(V)$, $p \in \mathcal P(\mathbb C)$, and $\alpha \in \mathbb C$. Prove that $\alpha$ is an eigenvalue of $p(T)$ if and only if $\alpha = p(\lambda)$ for some eigenvalue $\lambda$ of $T$. 
+
+\begin{proof}
+We have $p(z) = a_0 + a_1z + \dots + a_nz^n$.
+
+Suppose we are given an eigenvalue $\lambda$, with $\alpha = p(\lambda)$. Consider an eigenvector of $T$, $v$ where $Tv = \lambda v$. Then $T^kv = \lambda^k v$, so $p(T)v = (a_0 + a_1\lambda + \dots + a_n\lambda^n) = p(\lambda)v$, which makes $p(\lambda) = \alpha$ an eigenvalue of $p(T)$.
+
+Now suppose that $\alpha$ is an eigenvalue of $p(T)$. Then there is some $z$ where 
+
+
+\begin{align*}
+(p(T) - \alpha I)z = 0
+\end{align*}
+
+
+By the fundamental theorem of algebra,
+
+$$p(T) - \alpha I = c(T - \lambda_1I)\dots(T- \lambda_n I)$$
+
+Since $p(T) - \alpha I$ is not invertible, at least one of the factors here, $(T - \lambda_iI)$, is not invertible. So there is somt $(T - \lambda_i I)v = 0$, so $\lambda_i$ is an eigenvalue of $T$, with $p(\lambda_i) - \alpha I = 0$, so $\alpha = p(\lambda_i)$.
+\end{proof}
+    
+    \item[6] Suppose $T \in \L(\F)$ is defined by $T(w, z) = (-z, w)$. Find the minimal polynomial of $T$.
+    
+    \begin{proof}
+        \begin{align*}
+            T^2(w, z) &= (-w, -z) \\
+            T^2 + 1 &= 0
+        \end{align*}
+    \end{proof}
+
+    \item[8] Suppose that $T \in \L(\R^2)$ is the operator of counterclockise rotation by $1^\circ$. Find the minimal polynomial of $T$.
+    
+    \begin{proof}
+        $T$ is obviously not a scalar multiple of the identity, so the degree of our minimal polynomial is 2.
+
+        $$\M(T) = \begin{pmatrix}
+            \cos(1^\circ) & -\sin(1^\circ) \\
+            \sin(1^\circ) & \cos(1^\circ)
+        \end{pmatrix}$$
+
+        And also 
+
+        $$\M(T^2) = \begin{pmatrix}
+            \cos(2^\circ) & -\sin(2^\circ) \\
+            \sin(2^\circ) & \cos(2^\circ)
+        \end{pmatrix}$$
+
+        Consider the basis vector $e_1 = (1, 0)$. Then there is some $b, c \in \R$ such that 
+
+        \begin{align*}
+            T^2e_1 + aTe_1 + bIe_1 &= 0 \\
+            (\cos(2^\circ), \sin(2^\circ)) + a(\cos(1^\circ), \sin(1^\circ)) + b(1, 0) &= 0\\
+            \cos(2^\circ) + a\cos(1^\circ) + b &= 0 \\
+            \sin(2^\circ) + a\sin(1^\circ) &= 0 \\
+            a &= -\frac{\sin(2^\circ)}{\sin(1^\circ)} \\
+            b &= \frac{\cos(1^\circ)\sin(2^\circ)}{\sin(1^\circ)} - \cos(2^\circ)
+        \end{align*}
+
+        Wow quite a mess.
+    \end{proof}
+
+    \item[10] Suppose that $V$ is finite-dimensional, $T \in \L(V)$, and $v \in V$. Prove that 
+    
+    $$\linspan(v, Tv, \dots, T^mv) = \linspan(v, Tv, \dots, T^{\dim V - 1}v)$$
+
+    for all integers $m \ge \dim V - 1$.
+
+    \begin{proof}
+        Since the left side is a subset of the right side, it is clearly at least as large. Now suppose $m =\dim V$. We would like to show that there is some $a_0, \dots, a_{m-1}$ such that 
+
+        \begin{align*}
+            a_0v + a_1Tv + \dots + a_{m-1}T^{m-1}v = T^{m}v \\
+            T^{m}v - a_{m-1}T^{m-1} - \dots - a_0v = 0
+        \end{align*}
+        There is always a solution to this because the degree of the minimal polynomial is less than or equal to $m$, so we can do a polynomial multiplication to increase the degree to $m$.
+    \end{proof}
+
+    \item[16] Suppose $a_0, \dots, a_{n-1} \in \F$. Let $T$ be the operator on $\F^n$ whose matrix (with respect to the standard basis) is 
+    
+    $$\begin{pmatrix}
+        0 & & & & -a_0 \\
+        1 & 0 & \ddots & & -a_1 \\
+          & 1 & \ddots & & -a_2 \\
+          &   &  & & \vdots \\
+          &   &        & 0 & -a_{n - 2} \\
+          &   &        & 1 & -a_{n - 1}
+    \end{pmatrix}$$
+
+    Here all the entries of the matrix are 0 except all 1's on the line under the diagonal and the entries in the last column (some of which might also be 0). Show that the minimal polynomial of $T$ is the polynomial
+
+    $$a_0 + a_1z + \dots + a_{n-1}z^{n-1} + z^n$$
+
+    \begin{proof}
+        Consider where it throws the first basis vector of $\F^n$, $e_0$.
+
+        \begin{align*}
+            Ie_0 &= e_0 \\
+            Te_0 &= e_1 \\
+            \vdots \\
+            T^{n - 1}e_0 &= e_{n - 1} \\
+            T^n &= (-a_0, -a_1, \dots, -a_{n-1}) 
+        \end{align*}
+
+        Since for the $i$th basis vector, the only 2 items in this list that can touch it are $T^i v$ and $T^n v$, finding each coefficient, given that the coefficient of $T^n v$ is 1, is easy.
+
+        $$T^n + a_{n - 1}T^{n-1} + \dots + a_0T^0 = 0$$
+
+        So we are done.
+    \end{proof}
+
+    \item[20] Suppose $T \in \L(\F^4)$ is such that the eigenvalues of $T$ are 3, 5, 8. Prove that $(T - 3I)^2(T - 5I)^2(T - 8I)^2 = 0$.
+    
+    \begin{proof}
+        This is true if and only if our polynomial is a polynomial multiple of the minimal polynomial of $T$, so we can prove this instead. 
+
+        The minimal polynomial has at most degree $\dim V$, so here it is at most $4$. Also, it must have a factor of $(T - 3I)(T - 5I)(T - 8I)$ to cover the eigenvalues. It must not contain any other factors that would create a new eigenvalue, so the minimal polynomial is either the above, or the above multiplied by $(T - 3I), (T - 5I), (T - 8I)$. Regardless, the polynomial in our problem remains a multiple of it.
+    \end{proof}
+
+    \item[22] Suppose that $V$ is finite-dimensional and $T \in \L(V)$. Prove that $T$ is invertible if and only if $I \in \linspan(T, T^2, \dots, T^{\dim V})$.
+    
+    \begin{proof}
+        Suppose that $T$ was invertible. Then the constant term of the minimal polynomial of $T$ (which we will call $p(T)$) is non-zero, call that $a_0$. Then we can subtract out everything else out of the minimal polynomial to get the identity map.
+
+        Suppose that $I \in \linspan(T, T^2, \dots, T^{\dim V})$. Then $I = a_1T + a_2T^2 + \dots + a_{\dim V}T^{\dim V}$, so 
+
+        $$a_{\dim V}T^{\dim V} + \dots + a_1T - I = 0$$
+
+        Thus this polynomial is a polynomial multiple of the minimal polynomial. Because the constant term is non-zero, the constant term of the minimal polynomial must not be zero as well (because otherwise we would have 0 as a factor of the above polynomial).
+    \end{proof}
+
+    \item[29] Show that every operator on a finite-dimensional vector space of dimension at least two has an invariant subspace of dimension two.
+    
+    \begin{proof}
+        Consider vector space $V$, an operator $T \in \L(V)$, and its minimal polynomial, $p(T)$. Because we are working in $\R$ or $\C$, $p(T)$ can be factored as 
+
+        $$p(T) = (T - \lambda_1I)\dots(T - \lambda_k I)(T^2 + b_1T + c_1I)\dots(T^2 + b_m + c_mI)$$
+
+        Potentially there are no linear terms, potentially there are no irreducible quadratic terms, but there is definitely at least one of at least one of the 2 types because the polynomial is non-zero.
+
+        We will proceed with induction. If $\dim V = 2$, $V$ is trivially our invariant subspace.
+
+        Suppose that $\dim V > 2$ and our hypothesis is true for all $n < \dim V$. For some arbitrary vector, when we apply it to $p(T)$, eventually one of them is going send a non-zero vector to the zero vector. 
+
+        Suppose it was one of the quadratic terms. Then we have some $v \in V$ such that 
+
+        \begin{align*}
+            (T^2 + b_iT + c_iI)v &= 0 \\
+            T(Tv) &= -b_iTv - c_iv 
+        \end{align*}
+
+        Thus, $\linspan(v, Tv)$ is invariant under $T$. Its dimension is also 2. If $v$ was a scalar multiple of $Tv$, then $v$ would be an eigenvector. However, if $v$ was an eigenvector, we would be able to factor out such a factor from the quadratic, contradicting the fact that it is irreducible. Thus, $\linspan(v, Tv)$ is our desired invariant subspace of dimension 2.
+
+        Suppose it was a linear term instead. Then we have some $v \in V$ such that 
+
+        $$(T - \lambda I)v = 0$$
+
+        Thus $v$ is an eigenvector and $\lambda$ is its eigenvalue. By exercise 39 of Section 5A, this means that we have a subspace, $U$, of dimension $\dim V - 1$ such that $T$ is invariant under this subspace. Now we can apply our inductive hypothesis to extract out the invariant subspace of dimension 2 for $U$, which is also an invariant subspace of dimension 2 for $V$.
+
+        
+
+
+    \end{proof}
+
+\end{enumerate}
