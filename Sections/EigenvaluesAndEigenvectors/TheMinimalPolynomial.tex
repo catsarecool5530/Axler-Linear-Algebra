@@ -152,6 +152,26 @@ Since $p(T) - \alpha I$ is not invertible, at least one of the factors here, $(T
         Thus this polynomial is a polynomial multiple of the minimal polynomial. Because the constant term is non-zero, the constant term of the minimal polynomial must not be zero as well (because otherwise we would have 0 as a factor of the above polynomial).
     \end{proof}
 
+    
+    \item[25] Suppose $V$ is finite-dimensional, $T \in \mathcal L(V)$, and $U$ is a subspace of $V$ that is invariant under $T$.
+
+    \begin{enumerate}
+        \item[(a)] Prove that the minimal polynomial of $T$ is a polynomial multiple of the minimal polynomial of the quotient operator $T/U$.
+
+        \begin{proof}
+            Let's say that the minimal polynomial of $T$ is $p$ and the minimal polynomial of $T|_U$ is called $p_U$. Then $p(T|_U)$ clearly equals $0 + U$, so $p$ polynomial multiple of $p_U$. 
+        \end{proof}
+        \item[(b)] Prove that
+        \[
+            \text{(minimal polynomial of } T|_U\text{)} \times \text{(minimal polynomial of } T/U\text{)}
+        \]
+        is a polynomial multiple of the minimal polynomial of $T$.
+
+        \begin{proof}
+            We will prove that that polynomial sends all vectors to 0 when $T$ is plugged in. Suppose that we have $v \in V$. After applying the minimal polynomial of $T/U$, all that will be left is some $u \in U$, since $p_{T/U}(v + U) = 0 + U$. After applying the minimal polynomial of $T|_U$, we will be left with nothing. 
+        \end{proof}
+    \end{enumerate}
+
     \item[29] Show that every operator on a finite-dimensional vector space of dimension at least two has an invariant subspace of dimension two.
     
     \begin{proof}

@@ -1,0 +1,85 @@
+\subsection{Upper Triangular Matrices}
+
+Yay a shorter subsection! This one is pretty easy, though there are more conditions I need to hold in my head these days.
+
+\begin{enumerate}
+
+    \item[1] Prove or give a counterexample: If $T \in \L(V)$ and $T^2$ has an upper-triangular matrix with respect to some basis of $V$, then $T$ has an upper-triangular matrix with respect to some basis of $V$.
+    
+    \begin{proof}
+        Nope. Over $\R$, a 90 degree rotation has no eigenvalues, and thus has no upper triangular matrix. However, 2 90 degree turns forms a 180 degree turn, which does have an eigenvalue of -1, and whose matrix with respect to the standard basis is already upper triangular.
+    \end{proof}
+
+    \item[2] Suppose $A$ and $B$ are upper-triangular matrices of the same size, with $\alpha_1, \dots, \alpha_n$ on the diagonal of $A$ and $\beta_1, \dots, \beta_n$ on the diagonal of $B$. 
+    
+    \begin{enumerate}
+        \item Show that $A + B$ is an upper-triangular matrix with $\alpha_1 + \beta_1, \dots, \alpha_n + \beta_n$ on the diagonal. 
+        
+        \begin{proof}
+            Look at it.
+        \end{proof}
+        
+        \item Show that $AB$ is an upper-triangular matrix with $\alpha_1\beta_1, \dots, \alpha_n\beta_n$ on the diagonal.
+        
+        \begin{proof}
+            When we see the formula, its all 0s down the row, then $\alpha_i\beta_i$, then all zeroes down the column.
+        \end{proof}
+    \end{enumerate}
+
+    \item[4] Give an example of an operator whose matrix with respect to some basis
+contains only 0’s on the diagonal, but the operator is invertible.
+
+\begin{proof}
+    The cyclic shift operator is such an operator. Given a basis of $V$, $v_0, \dots, v_{n-1}$, the shift operator, $T$, has $Tv_i = v_{i + 1 \pmod{n}}$
+\end{proof}
+    
+\item[5] Give an example of an operator whose matrix with respect to some basis
+contains only nonzero numbers on the diagonal, but the operator is not
+invertible.
+
+\begin{proof}
+    The operator with a matrix representation of all 1s is not invertible (it is clearly not injective), but the diagonal is all non-zero (namely, 1).
+\end{proof}
+
+\item[7] Suppose $V$ is finite-dimensional, $T \in \L(V)$, and $v \in V$. 
+
+\begin{enumerate}
+    \item Prove that there exists a unique monic polynomial $p_v$ of smallest degree such that $p_v(T)v = 0$.
+    
+    \begin{proof}
+        First of all, the minimal polynomial of $T$, $p(T)$, sends $v$ to zero. So the set of such polynomials is not empty. Therefore, there exists a minimum degree such that such a polynomial exists. Now we prove uniqueness. Consider 2 such polynomials, $s, t$ such that $s(T)v = 0$ and $t(T)v = 0$, both of minimum degree to satisfy that condition. Then $(s - t)(T)v = 0$, and $s - t$ has a smaller degree, so it must be 0. Thus, $s = t$, as desired.
+    \end{proof}
+    
+    \item Prove that the minimal polynomial of $T$ is a polynomial multiple of $p_v$.
+    
+    \begin{proof}
+        Consider the minimal polynomial, $p$. It has degree at least $\deg p_v$. We can use the polynomial division algorithm to split it into $q$ and $r$ such that 
+
+        $$p = qp_v + r$$
+
+        Apply $v$ to both sides, 
+
+        \begin{align*}
+            p(T)v &= q(T)p_v(T)v + r(T)v \\
+            0 &= q(T)0 + r(T)v \\
+            r(T)v &= 0 
+        \end{align*}
+
+        Since $r$ has a smaller degree than $p_v$ and sends $v$ to zero, it must also be zero, so $p = qp_v$ as desired.
+    \end{proof}
+\end{enumerate}
+
+\item[12] Suppose that $V$ is finite-dimensional, $T \in \L(V)$ has an upper-triangular matrix with respect to some basis of $V$, and $U$ is a subspace of $V$ that is invariant under $T$. 
+
+\begin{enumerate}
+    \item Prove that $T_{|U}$ has an upper-triangular matrix with respect to some basis of $U$.
+    
+    \begin{proof}
+       Consider the minimal polynomial of $T_{|U}$ and the minimal polynomial of $T$. The minimal polynomial of $T$ is of the form $(T - \lambda_1 I) \dots (T - \lambda_n I)$. The minimal polynomial of $T$ is a multiple of the minimal polynomial of $T_{|U}$, so $T_{|U}$ will be of the form $(T - \alpha_1 I) \dots (T - \alpha_m I)$ where $\{\alpha_1, \dots, \alpha_m\} \subseteq \{\lambda_1, \dots, \lambda_n\}$. Since the minimal polynomial is of that form, $T_{|U}$ has an upper triangular matrix. 
+    \end{proof}
+    \item Prove that the quotient operator $T/U$ has an upper-triangular matrix with respect to some basis of $V/U$.
+    \begin{proof}
+        The minimal polynomial of $T$ is a multiple of the minimal polynomial of $T/U$, so the argument is the same as the one above.
+    \end{proof}
+\end{enumerate}
+\end{enumerate}
